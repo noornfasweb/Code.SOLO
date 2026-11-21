@@ -2,7 +2,7 @@
 
 A Solo Leveling-inspired RPG habit tracker. Turn your daily habits into quests, earn XP, level up, and rise from the weakest to the strongest.
 
-**▶️ Live app:** https://YOUR-USERNAME.github.io/YOUR-REPO/
+**▶️ Live app:** https://noornfasweb.github.io/Code.SOLO/
 
 > **Disclaimer:** This is an unofficial, non-commercial fan project. It is not affiliated with, endorsed by, or sponsored by the creators or publishers of *Solo Leveling*. All rights to the original series belong to their respective owners.
 
@@ -14,7 +14,6 @@ A Solo Leveling-inspired RPG habit tracker. Turn your daily habits into quests, 
 |-----------|--------|--------|
 | ![Dashboard](screenshots/dashboard.png) | ![Status](screenshots/status.png) | ![Charts](screenshots/charts.png) |
 
-*(Add your screenshots to a `screenshots/` folder and update the filenames above.)*
 
 ---
 
@@ -46,8 +45,8 @@ Open the live link above in any modern browser.
 
 ### Run it locally
 ```bash
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git
-cd YOUR-REPO
+git clone https://github.com/noornfasweb/Code.SOLO.git
+cd Code.SOLO
 # Option 1: just open index.html in your browser
 # Option 2: serve it (needed for the service worker / install)
 python3 -m http.server 8000
@@ -88,4 +87,4 @@ The code in this repository is released under the [MIT License](LICENSE). Solo L
 
 ---
 
-Made by **Noor**
+Made by **Noor Farz**

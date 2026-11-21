@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="theme-color" content="#020510"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="Hunter System"/>
+<title>Hunter System — Solo Leveling</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#020510;--card:rgba(8,18,50,0.72);--border:rgba(74,158,255,0.2);--borderB:rgba(74,158,255,0.48);
+  --blue:#4a9eff;--bglow:rgba(74,158,255,0.32);--purple:#8b5cf6;--pglow:rgba(139,92,246,0.3);
+  --gold:#f0c040;--gglow:rgba(240,192,64,0.38);--red:#ef4444;--green:#22c55e;--orange:#f97316;
+  --text:#e2e8f0;--muted:#7a9cc0;--dim:rgba(100,148,200,0.38);
+  --M:'Rajdhani',sans-serif;--Mo:'Share Tech Mono',monospace;
+}
+/* ── MONARCH THEME ── */
+body.monarch-theme{
+  --bg:#0d0205;
+  --card:rgba(40,5,12,0.75);
+  --border:rgba(220,40,60,0.22);
+  --borderB:rgba(220,40,60,0.5);
+  --blue:#e03050;--bglow:rgba(220,40,60,0.35);
+  --purple:#c0184a;--pglow:rgba(192,24,74,0.3);
+  --muted:#9a6070;--dim:rgba(180,80,100,0.35);
+  --text:#f0d8dc;
+}
+body.monarch-theme .bg-g{background:
+  radial-gradient(ellipse 110% 60% at 50% -8%,rgba(180,20,40,0.45) 0%,transparent 65%),
+  radial-gradient(ellipse 75% 50% at 92% 88%,rgba(120,10,30,0.25) 0%,transparent 58%),
+  radial-gradient(ellipse 55% 45% at 4% 52%,rgba(100,5,20,0.2) 0%,transparent 52%),
+  radial-gradient(ellipse 45% 35% at 50% 102%,rgba(200,30,50,0.15) 0%,transparent 48%),
+  linear-gradient(180deg,rgba(18,3,6,0.95) 0%,rgba(10,2,4,0.99) 100%)}
+body.monarch-theme .grid-o{background-image:linear-gradient(rgba(220,40,60,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(220,40,60,0.05) 1px,transparent 1px)}
+body.monarch-theme .c-tl,body.monarch-theme .c-tr{border-color:var(--blue)}
+body.monarch-theme .c-bl,body.monarch-theme .c-br{border-color:var(--blue)}
+body.monarch-theme .xpf{background:linear-gradient(90deg,rgba(220,40,60,.88),rgba(180,10,50,.96));box-shadow:0 0 14px rgba(220,40,60,.55)}
+body.monarch-theme .tab.active{background:rgba(220,40,60,.17);color:var(--blue);box-shadow:0 0 15px var(--bglow),inset 0 0 15px rgba(220,40,60,.05);border-color:rgba(220,40,60,.35)}
+body.monarch-theme .nb.active{color:var(--blue)}
+body.monarch-theme .nb.active .ni{filter:drop-shadow(0 0 6px var(--blue))}
+body.monarch-theme .rb{border-color:var(--blue);color:var(--blue);box-shadow:0 0 20px var(--bglow),inset 0 0 20px rgba(220,40,60,.07);background:rgba(220,40,60,.07)}
+body.monarch-theme .hn span{color:var(--blue);text-shadow:0 0 24px var(--bglow)}
+body.monarch-theme .sys-a{color:var(--blue)}
+body.monarch-theme .hunter-title-display{color:#e03050;text-shadow:0 0 10px rgba(220,40,60,.5)}
+body.monarch-theme .streak{background:rgba(220,40,60,.07);border-color:rgba(220,40,60,.22)}
+body.monarch-theme .sd{color:#e03050;text-shadow:0 0 14px rgba(220,40,60,.5)}
+body.monarch-theme .addbtn:hover{border-color:var(--blue);color:var(--blue);background:rgba(220,40,60,.05)}
+body.monarch-theme .badd{background:rgba(220,40,60,.15);border-color:rgba(220,40,60,.5);color:var(--blue)}
+body.monarch-theme .badd:hover{background:var(--blue);color:#fff}
+body.monarch-theme .qchk{border-color:rgba(220,40,60,.5)}
+body.monarch-theme .quest:hover{border-color:var(--borderB);box-shadow:0 0 24px rgba(220,40,60,.15)}
+body.monarch-theme .wc-card{background:linear-gradient(135deg,rgba(180,20,40,.1),rgba(120,5,30,.1));border-color:rgba(220,40,60,.3)}
+body.monarch-theme .wc-title,.body.monarch-theme .wc-badge,.body.monarch-theme .wc-prog-val,.body.monarch-theme .wc-reward{color:#e03050}
+body.monarch-theme .wc-bar-f{background:linear-gradient(90deg,#e03050,#a01030)}
+/* theme transition */
+body{transition:background .5s}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--M);min-height:100vh;overflow-x:hidden}
+#bg-cv{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.bg-g{position:fixed;inset:0;z-index:1;pointer-events:none;background:
+  radial-gradient(ellipse 110% 60% at 50% -8%,rgba(15,65,220,0.48) 0%,transparent 65%),
+  radial-gradient(ellipse 75% 50% at 92% 88%,rgba(55,15,180,0.25) 0%,transparent 58%),
+  radial-gradient(ellipse 55% 45% at 4% 52%,rgba(25,8,150,0.2) 0%,transparent 52%),
+  radial-gradient(ellipse 45% 35% at 50% 102%,rgba(74,158,255,0.15) 0%,transparent 48%),
+  linear-gradient(180deg,rgba(3,8,28,0.92) 0%,rgba(2,5,16,0.98) 100%)}
+.grid-o{position:fixed;inset:0;z-index:2;pointer-events:none;
+  background-image:linear-gradient(rgba(74,158,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(74,158,255,0.04) 1px,transparent 1px);
+  background-size:36px 36px}
+.scan-o{position:fixed;inset:0;z-index:3;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.055) 2px,rgba(0,0,0,0.055) 4px)}
+.c{position:fixed;width:54px;height:54px;pointer-events:none;z-index:12}
+.c-tl{top:10px;left:10px;border-top:1px solid var(--blue);border-left:1px solid var(--blue);opacity:.58}
+.c-tr{top:10px;right:10px;border-top:1px solid var(--blue);border-right:1px solid var(--blue);opacity:.58}
+.c-bl{bottom:68px;left:10px;border-bottom:1px solid var(--blue);border-left:1px solid var(--blue);opacity:.28}
+.c-br{bottom:68px;right:10px;border-bottom:1px solid var(--blue);border-right:1px solid var(--blue);opacity:.28}
+.app{max-width:480px;margin:0 auto;padding:1rem 1rem 6.5rem;position:relative;z-index:10}
+.gc{background:var(--card);border:1px solid var(--border);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:8px}
+/* HEADER */
+.hdr{text-align:center;padding:1.4rem 0 1.1rem;border-bottom:1px solid var(--border);margin-bottom:1.1rem}
+.sys-a{font-family:var(--Mo);font-size:10px;color:var(--blue);letter-spacing:3px;animation:pulse 2.5s infinite;margin-bottom:5px}
+.hnw{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:6px}
+.hn{font-size:26px;font-weight:700;letter-spacing:3px}
+.hn span{color:var(--blue);text-shadow:0 0 24px var(--bglow)}
+.rb{display:inline-block;padding:4px 20px;border:1px solid var(--blue);border-radius:2px;font-size:12px;color:var(--blue);letter-spacing:2px;font-family:var(--Mo);box-shadow:0 0 20px var(--bglow),inset 0 0 20px rgba(74,158,255,0.07);background:rgba(74,158,255,0.07)}
+.ebtn{background:transparent;border:1px solid var(--border);border-radius:3px;color:var(--muted);padding:3px 9px;font-family:var(--M);font-size:11px;cursor:pointer;letter-spacing:1px}
+.ebtn:hover{border-color:var(--blue);color:var(--blue)}
+/* STREAK */
+.streak{display:flex;align-items:center;gap:10px;background:rgba(240,192,64,0.07);border:1px solid rgba(240,192,64,0.22);backdrop-filter:blur(12px);border-radius:8px;padding:10px 14px;margin-bottom:.9rem}
+.sd{font-family:var(--Mo);font-size:20px;color:var(--gold);margin-left:auto;text-shadow:0 0 14px var(--gglow)}
+/* XP */
+.xpw{padding:14px 16px;margin-bottom:.9rem}
+.xph{display:flex;justify-content:space-between;margin-bottom:8px}
+.xpt{height:9px;background:rgba(74,158,255,0.1);border-radius:5px;overflow:hidden;border:1px solid rgba(74,158,255,0.12)}
+.xpf{height:100%;background:linear-gradient(90deg,rgba(74,158,255,.88),rgba(139,92,246,.96));border-radius:5px;transition:width .7s cubic-bezier(.4,0,.2,1);box-shadow:0 0 14px rgba(74,158,255,.55);position:relative}
+.xpf::after{content:'';position:absolute;right:0;top:0;bottom:0;width:3px;background:rgba(255,255,255,.85);animation:sh 1.5s infinite}
+@keyframes sh{0%,100%{opacity:.85}50%{opacity:0}}
+/* STAT CARDS */
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:.9rem}
+.sc{padding:12px 14px;position:relative;overflow:hidden;transition:all .25s;cursor:default}
+.sc::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--ac)}
+.sc:hover{border-color:var(--borderB);box-shadow:0 0 24px var(--bglow)}
+.sc-l{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.sc-v{font-size:22px;font-weight:700;font-family:var(--Mo)}
+.sc-s{font-size:11px;color:var(--dim);margin-top:2px}
+/* TABS */
+.tabs{display:flex;gap:4px;background:rgba(8,18,50,.65);border:1px solid var(--border);backdrop-filter:blur(12px);border-radius:8px;padding:4px;margin-bottom:.9rem}
+.tab{flex:1;padding:7px 2px;border:none;background:transparent;color:var(--muted);font-family:var(--M);font-size:11px;font-weight:600;letter-spacing:1px;cursor:pointer;border-radius:5px;transition:all .2s;text-transform:uppercase}
+.tab.active{background:rgba(74,158,255,.17);color:var(--blue);box-shadow:0 0 15px var(--bglow),inset 0 0 15px rgba(74,158,255,.05);border:1px solid rgba(74,158,255,.35)}
+.panel{display:none}.panel.active{display:block}
+.sechdr{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.sect{font-size:11px;color:var(--muted);letter-spacing:2px;white-space:nowrap;text-transform:uppercase}
+.secl{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+/* ── QUESTS ── */
+.qlist{display:flex;flex-direction:column;gap:9px;margin-bottom:1rem}
+.quest{background:var(--card);border:1px solid var(--border);backdrop-filter:blur(14px);border-radius:10px;display:flex;align-items:stretch;cursor:pointer;transition:all .25s;overflow:hidden;position:relative}
+.quest:hover{border-color:var(--borderB);box-shadow:0 0 24px rgba(74,158,255,.14)}
+.quest.done{opacity:.4}
+.quest.done .qname{text-decoration:line-through}
+/* quest body */
+.qbody{flex:1;padding:11px 12px;display:flex;align-items:center;gap:10px;min-width:0}
+.qchk{width:22px;height:22px;border:1px solid var(--borderB);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;transition:all .3s;background:rgba(74,158,255,.05)}
+.quest.done .qchk{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 0 12px rgba(34,197,94,.45)}
+.qinfo{flex:1;min-width:0}
+.qname{font-size:14px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qsub{font-size:10px;color:var(--muted);letter-spacing:1px;margin-top:3px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.qdel{color:rgba(239,68,68,.38);cursor:pointer;font-size:10px;padding:1px 5px;border-radius:2px;transition:all .2s;border:1px solid transparent;z-index:10}
+.qdel:hover{color:var(--red);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+/* persist badge */
+.qpbadge{font-size:8.5px;font-family:var(--Mo);padding:1px 5px;border-radius:2px;cursor:pointer;border:1px solid rgba(74,158,255,0.22);color:var(--dim);transition:all .2s;white-space:nowrap}
+.qpbadge.on{color:var(--blue);border-color:rgba(74,158,255,0.5);background:rgba(74,158,255,0.1);text-shadow:0 0 6px var(--bglow)}
+.qxp{font-family:var(--Mo);font-size:11px;color:var(--gold);background:rgba(240,192,64,.1);padding:3px 7px;border-radius:3px;white-space:nowrap;flex-shrink:0;border:1px solid rgba(240,192,64,.24)}
+/* add form */
+.addbtn{width:100%;padding:10px;background:transparent;border:1px dashed rgba(74,158,255,.25);border-radius:8px;color:var(--muted);font-family:var(--M);font-size:13px;cursor:pointer;letter-spacing:1px;transition:all .2s}
+.addbtn:hover{border-color:var(--blue);color:var(--blue);background:rgba(74,158,255,.05)}
+.addform{background:rgba(8,18,65,.78);border:1px solid rgba(74,158,255,.35);backdrop-filter:blur(18px);border-radius:8px;padding:14px;margin-bottom:10px;display:none;box-shadow:0 0 32px rgba(74,158,255,.12)}
+.addform.open{display:block}
+.fi{width:100%;background:rgba(4,10,36,.72);border:1px solid var(--border);border-radius:4px;padding:9px 12px;color:var(--text);font-family:var(--M);font-size:14px;margin-bottom:8px;outline:none;transition:border-color .2s}
+.fi:focus{border-color:var(--blue);box-shadow:0 0 10px var(--bglow)}
+.fsel{width:100%;background:rgba(4,10,36,.85);border:1px solid var(--border);border-radius:4px;padding:9px 12px;color:var(--text);font-family:var(--M);font-size:14px;margin-bottom:8px;outline:none;cursor:pointer}
+.fsel option{background:#050c26}
+.frow{display:flex;gap:8px}
+.badd{flex:1;padding:9px;background:rgba(74,158,255,.15);border:1px solid rgba(74,158,255,.52);border-radius:4px;color:var(--blue);font-family:var(--M);font-size:13px;font-weight:600;cursor:pointer;letter-spacing:1px;transition:all .2s}
+.badd:hover{background:var(--blue);color:#000;box-shadow:0 0 22px var(--bglow)}
+.bcan{padding:9px 16px;background:transparent;border:1px solid var(--border);border-radius:4px;color:var(--muted);font-family:var(--M);font-size:13px;cursor:pointer}
+/* persist toggle row in form */
+.persist-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;background:rgba(74,158,255,0.06);border:1px solid rgba(74,158,255,0.15);border-radius:4px;padding:8px 12px;cursor:pointer}
+.persist-row input{accent-color:var(--blue);width:14px;height:14px;cursor:pointer}
+.persist-row label{font-size:12px;color:var(--muted);letter-spacing:1px;cursor:pointer;flex:1}
+.persist-row span{font-size:10px;color:var(--dim);font-family:var(--Mo)}
+/* ── ATTRS ── */
+.arow{background:var(--card);border:1px solid var(--border);backdrop-filter:blur(12px);border-radius:8px;padding:13px;display:flex;align-items:flex-start;gap:12px;transition:all .25s;margin-bottom:8px}
+.arow:hover{border-color:var(--borderB)}
+.aico{width:38px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center}
+.ainf{flex:1;min-width:0}
+.aname{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+.aval-r{display:flex;align-items:baseline;gap:8px;margin:4px 0 2px}
+.anum{font-size:22px;font-weight:700;font-family:var(--Mo)}
+.alvl{font-family:var(--Mo);font-size:11px;color:var(--muted)}
+.abt{height:6px;background:rgba(74,158,255,.09);border-radius:3px;margin-top:5px;overflow:hidden}
+.abf{height:100%;border-radius:3px;transition:width .6s ease}
+.anxt{font-size:10px;color:var(--dim);margin-top:5px;letter-spacing:.8px;font-family:var(--Mo)}
+.atb{background:rgba(74,158,255,.09);border:1px solid var(--border);border-radius:4px;color:var(--muted);width:34px;height:34px;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.atb:hover{background:rgba(74,158,255,.24);color:var(--blue);border-color:rgba(74,158,255,.48);box-shadow:0 0 14px var(--bglow)}
+/* ── CHARTS ── */
+.kdg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1rem}
+.kdc{background:var(--card);border:1px solid var(--border);backdrop-filter:blur(10px);border-radius:8px;padding:12px;text-align:center}
+.kdv{font-family:var(--Mo);font-size:20px;font-weight:700}
+.kdl{font-size:10px;color:var(--muted);letter-spacing:1px;margin-top:3px;text-transform:uppercase}
+.chart-card{padding:16px;margin-bottom:1rem}
+.chart-t{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+/* ── HISTORY ── */
+.hlist{display:flex;flex-direction:column;gap:6px}
+.hitem{background:var(--card);border:1px solid var(--border);backdrop-filter:blur(8px);border-radius:6px;padding:10px 14px;display:flex;align-items:center;gap:10px}
+.hdate{font-family:var(--Mo);font-size:11px;color:var(--dim);min-width:80px}
+.htext{font-size:13px;color:var(--muted);flex:1}
+.hxp{font-family:var(--Mo);font-size:12px;color:var(--gold)}
+.hempty{font-size:13px;color:var(--dim);text-align:center;padding:2rem;letter-spacing:1px;font-family:var(--Mo)}
+/* ── TOAST ── */
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:rgba(8,18,55,.93);border:1px solid var(--blue);backdrop-filter:blur(18px);border-radius:6px;padding:10px 22px;font-family:var(--Mo);font-size:12px;color:var(--blue);letter-spacing:2px;z-index:5000;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 0 32px var(--bglow);max-width:90vw;text-align:center;white-space:nowrap}
+.toast.show{opacity:1}
+.toast.gold{background:rgba(35,22,5,.93);border-color:var(--gold);color:var(--gold);box-shadow:0 0 32px var(--gglow)}
+/* ── LEVEL UP ── */
+.lvlup{display:none;position:fixed;inset:0;background:rgba(1,3,16,.92);z-index:4000;align-items:center;justify-content:center;flex-direction:column;backdrop-filter:blur(10px)}
+.lvlup.show{display:flex}
+.lub{background:rgba(10,22,65,.9);border:1px solid rgba(240,192,64,.62);backdrop-filter:blur(24px);border-radius:12px;padding:2.5rem 3rem;text-align:center;animation:zIn .5s cubic-bezier(.4,0,.2,1);box-shadow:0 0 80px rgba(240,192,64,.2),inset 0 0 60px rgba(240,192,64,.04)}
+@keyframes zIn{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.lue{font-family:var(--Mo);font-size:11px;letter-spacing:4px;color:var(--gold);margin-bottom:8px;animation:pulse 1s infinite}
+.lun{font-size:80px;font-weight:700;color:var(--gold);line-height:1;text-shadow:0 0 40px var(--gglow)}
+.lur{font-size:14px;color:var(--muted);letter-spacing:3px;margin-top:8px}
+.luc{margin-top:1.5rem;padding:10px 28px;background:rgba(240,192,64,.12);border:1px solid rgba(240,192,64,.52);border-radius:4px;color:var(--gold);font-family:var(--M);font-size:14px;font-weight:600;cursor:pointer;letter-spacing:2px;transition:all .2s}
+.luc:hover{background:var(--gold);color:#000}
+/* ── NAME MODAL ── */
+.mover{display:none;position:fixed;inset:0;background:rgba(1,3,16,.78);z-index:3000;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.mover.show{display:flex}
+.mbox{background:rgba(10,22,65,.93);border:1px solid rgba(74,158,255,.44);backdrop-filter:blur(24px);border-radius:10px;padding:1.5rem;width:90%;max-width:340px;box-shadow:0 0 50px rgba(74,158,255,.15)}
+.mti{font-size:13px;letter-spacing:2px;color:var(--blue);font-family:var(--Mo);margin-bottom:1rem}
+.min{width:100%;background:rgba(3,8,30,.85);border:1px solid rgba(74,158,255,.44);border-radius:4px;padding:10px 14px;color:var(--text);font-family:var(--M);font-size:16px;outline:none;margin-bottom:1rem;letter-spacing:2px;text-transform:uppercase}
+/* ── BOTTOM NAV ── */
+.bnav{position:fixed;bottom:0;left:0;right:0;background:rgba(2,5,20,.9);border-top:1px solid var(--border);backdrop-filter:blur(22px);display:flex;z-index:200;padding-bottom:env(safe-area-inset-bottom)}
+.nb{flex:1;padding:13px 1px 9px;background:transparent;border:none;color:var(--dim);font-family:var(--M);font-size:7.5px;font-weight:600;letter-spacing:.3px;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:3px;text-transform:uppercase}
+.nb .ni{font-size:17px;transition:all .2s}
+.nb.active{color:var(--blue)}
+.nb.active .ni{filter:drop-shadow(0 0 6px var(--blue))}
+/* ── SETTINGS ── */
+.ic{padding:14px;margin-bottom:.9rem}
+.ict{font-size:11px;color:var(--muted);letter-spacing:2px;margin-bottom:8px}
+.dz{margin-top:1.5rem;background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:14px}
+.dzt{font-size:11px;letter-spacing:2px;color:rgba(239,68,68,.6);margin-bottom:10px}
+.bdg{padding:8px 16px;background:transparent;border:1px solid rgba(239,68,68,.4);border-radius:4px;color:var(--red);font-family:var(--M);font-size:12px;cursor:pointer;letter-spacing:1px;transition:all .2s}
+.bdg:hover{background:var(--red);color:#fff}
+.abt2{font-size:12px;color:var(--dim);line-height:1.8;margin-top:1rem;font-family:var(--Mo)}
+.swtog{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:.9rem}
+.swl{font-size:13px;color:var(--muted);letter-spacing:1px;flex:1}
+.sw{position:relative;width:44px;height:24px;cursor:pointer;flex-shrink:0}
+.sw input{opacity:0;width:0;height:0}
+.swsl{position:absolute;inset:0;background:rgba(74,158,255,.1);border:1px solid var(--border);border-radius:12px;transition:all .3s;cursor:pointer}
+.swsl::before{content:'';position:absolute;left:3px;top:3px;width:16px;height:16px;background:var(--muted);border-radius:50%;transition:all .3s}
+.sw input:checked+.swsl{background:rgba(74,158,255,.22);border-color:rgba(74,158,255,.52)}
+.sw input:checked+.swsl::before{transform:translateX(20px);background:var(--blue);box-shadow:0 0 8px var(--bglow)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(74,158,255,.18);border-radius:2px}
+/* ── CATEGORY TABS ── */
+.cat-tabs{display:flex;gap:5px;margin-bottom:.9rem;overflow-x:auto;padding-bottom:2px}
+.cat-tabs::-webkit-scrollbar{display:none}
+.cat-tab{padding:5px 12px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--muted);font-family:var(--M);font-size:11px;font-weight:600;letter-spacing:1px;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0}
+.cat-tab.active{background:rgba(74,158,255,.15);color:var(--blue);border-color:rgba(74,158,255,.4)}
+/* ── WEEKLY CHALLENGE ── */
+.wc-card{background:linear-gradient(135deg,rgba(240,192,64,.08),rgba(139,92,246,.08));border:1px solid rgba(240,192,64,.3);backdrop-filter:blur(14px);border-radius:10px;padding:14px;margin-bottom:.9rem;position:relative;overflow:hidden}
+.wc-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--gold),var(--purple))}
+.wc-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.wc-icon{font-size:20px}
+.wc-title{font-size:12px;color:var(--gold);letter-spacing:2px;font-family:var(--Mo)}
+.wc-badge{margin-left:auto;font-size:9px;font-family:var(--Mo);padding:2px 8px;border-radius:10px;background:rgba(240,192,64,.12);border:1px solid rgba(240,192,64,.3);color:var(--gold)}
+.wc-name{font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px}
+.wc-desc{font-size:11px;color:var(--muted);margin-bottom:10px;line-height:1.5}
+.wc-prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.wc-prog-lbl{font-size:10px;color:var(--muted);letter-spacing:1px}
+.wc-prog-val{font-family:var(--Mo);font-size:12px;color:var(--gold)}
+.wc-bar{height:6px;background:rgba(240,192,64,.12);border-radius:3px;overflow:hidden;margin-bottom:8px}
+.wc-bar-f{height:100%;background:linear-gradient(90deg,var(--gold),var(--purple));border-radius:3px;transition:width .6s ease;box-shadow:0 0 8px rgba(240,192,64,.4)}
+.wc-reward{font-size:11px;color:rgba(240,192,64,.7);font-family:var(--Mo);letter-spacing:1px}
+.wc-done{position:absolute;inset:0;background:rgba(2,5,16,.75);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;backdrop-filter:blur(4px)}
+.wc-done-icon{font-size:36px}
+.wc-done-txt{font-family:var(--Mo);font-size:12px;color:var(--gold);letter-spacing:2px}
+/* ── STREAK SHIELD ── */
+.shield-card{display:flex;align-items:center;gap:12px;background:rgba(139,92,246,.07);border:1px solid rgba(139,92,246,.25);backdrop-filter:blur(12px);border-radius:8px;padding:12px 14px;margin-bottom:.9rem}
+.shield-icon{font-size:28px;filter:drop-shadow(0 0 8px rgba(139,92,246,.6))}
+.shield-info{flex:1}
+.shield-title{font-size:12px;color:var(--purple);letter-spacing:2px;font-family:var(--Mo)}
+.shield-desc{font-size:11px;color:var(--muted);margin-top:3px}
+.shield-pips{display:flex;gap:5px;margin-top:6px}
+.shield-pip{width:18px;height:18px;border-radius:50%;border:1px solid rgba(139,92,246,.4);background:rgba(139,92,246,.08);transition:all .3s}
+.shield-pip.active{background:var(--purple);border-color:var(--purple);box-shadow:0 0 8px rgba(139,92,246,.6)}
+.shield-use-btn{padding:6px 12px;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.4);border-radius:4px;color:var(--purple);font-family:var(--M);font-size:12px;font-weight:600;cursor:pointer;letter-spacing:1px;transition:all .2s;white-space:nowrap}
+.shield-use-btn:hover{background:var(--purple);color:#fff}
+.shield-use-btn:disabled{opacity:.3;cursor:default}
+/* ── DIFFICULTY SCALING BADGE ── */
+.diff-badge{font-size:9px;font-family:var(--Mo);padding:2px 6px;border-radius:2px;letter-spacing:1px;margin-left:2px}
+.diff-scaled{background:rgba(249,115,22,.12);color:var(--orange);border:1px solid rgba(249,115,22,.3)}
+/* ── HABITS PANEL ── */
+.habit-section{margin-bottom:1.2rem}
+.habit-section-title{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.habit-section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+
+/* ── ACHIEVEMENTS ── */
+.ach-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ach-card{background:var(--card);border:1px solid var(--border);backdrop-filter:blur(12px);border-radius:8px;padding:12px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;transition:all .3s;position:relative;overflow:hidden}
+.ach-card.unlocked{border-color:var(--ac,var(--gold));box-shadow:0 0 16px rgba(240,192,64,.2)}
+.ach-card.locked{opacity:.45;filter:grayscale(.4)}
+.ach-icon{font-size:28px;line-height:1}
+.ach-name{font-size:12px;font-weight:700;color:var(--text);letter-spacing:.5px}
+.ach-desc{font-size:10px;color:var(--muted);line-height:1.4}
+.ach-reward{font-family:var(--Mo);font-size:9px;padding:2px 6px;border-radius:2px;background:rgba(240,192,64,.1);border:1px solid rgba(240,192,64,.25);color:var(--gold)}
+.ach-unlocked-badge{position:absolute;top:6px;right:6px;font-size:10px;color:var(--gold)}
+.ach-new-flash{animation:achFlash .6s ease 3}
+@keyframes achFlash{0%,100%{box-shadow:0 0 16px rgba(240,192,64,.2)}50%{box-shadow:0 0 40px rgba(240,192,64,.7)}}
+
+/* ── TITLE SYSTEM ── */
+.title-list{display:flex;flex-direction:column;gap:6px}
+.title-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--card);backdrop-filter:blur(10px);cursor:pointer;transition:all .2s}
+.title-row:hover{border-color:var(--borderB)}
+.title-row.equipped{border-color:var(--gold);background:rgba(240,192,64,.06);box-shadow:0 0 12px rgba(240,192,64,.15)}
+.title-row.locked{opacity:.4;cursor:default}
+.title-icon{font-size:20px;width:28px;text-align:center;flex-shrink:0}
+.title-info{flex:1}
+.title-name{font-size:14px;font-weight:700;color:var(--text)}
+.title-cond{font-size:10px;color:var(--muted);margin-top:2px;letter-spacing:.5px}
+.title-equip-badge{font-size:9px;font-family:var(--Mo);padding:2px 8px;border-radius:10px}
+.title-equip-badge.on{background:rgba(240,192,64,.15);border:1px solid rgba(240,192,64,.4);color:var(--gold)}
+.title-equip-badge.off{background:rgba(74,158,255,.08);border:1px solid rgba(74,158,255,.25);color:var(--blue)}
+.title-equip-badge.locked{background:rgba(100,116,139,.08);border:1px solid rgba(100,116,139,.2);color:var(--muted)}
+/* equipped title under hunter name */
+.hunter-title-display{font-family:var(--Mo);font-size:10px;color:var(--gold);letter-spacing:2px;margin-bottom:5px;min-height:14px;text-shadow:0 0 10px var(--gglow)}
+
+/* ── PROFILE CARD ── */
+.profile-overlay{display:none;position:fixed;inset:0;background:rgba(1,3,16,.92);z-index:3500;align-items:center;justify-content:center;backdrop-filter:blur(10px);padding:1rem}
+.profile-overlay.show{display:flex}
+.profile-card{
+  --rankc:#4a9eff; --attrc:#4a9eff;
+  background:linear-gradient(135deg,rgba(8,18,55,.98),rgba(12,5,30,.98));
+  border:1px solid var(--rankc);
+  border-radius:14px;padding:1.5rem;width:100%;max-width:360px;
+  position:relative;overflow:hidden;
+  box-shadow:0 0 70px color-mix(in srgb, var(--rankc) 38%, transparent),
+             0 0 140px color-mix(in srgb, var(--rankc) 16%, transparent);
+  transition:box-shadow .5s, border-color .5s;
+}
+/* top radial bleed = rank color, lower radial bleed = top-attribute color */
+.profile-card::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 85% 50% at 50% -8%, color-mix(in srgb, var(--rankc) 40%, transparent) 0%, transparent 62%),
+    radial-gradient(ellipse 70% 55% at 85% 105%, color-mix(in srgb, var(--attrc) 32%, transparent) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 45% at 8% 100%, color-mix(in srgb, var(--attrc) 18%, transparent) 0%, transparent 55%);
+  transition:background .5s;
+}
+.pc-corner{position:absolute;width:30px;height:30px;transition:border-color .5s}
+.pc-tl{top:10px;left:10px;border-top:1px solid var(--rankc);border-left:1px solid var(--rankc);opacity:.65}
+.pc-tr{top:10px;right:10px;border-top:1px solid var(--rankc);border-right:1px solid var(--rankc);opacity:.65}
+.pc-bl{bottom:10px;left:10px;border-bottom:1px solid var(--rankc);border-left:1px solid var(--rankc);opacity:.65}
+.pc-br{bottom:10px;right:10px;border-bottom:1px solid var(--rankc);border-right:1px solid var(--rankc);opacity:.65}
+.pc-sys{font-family:var(--Mo);font-size:9px;color:var(--rankc);letter-spacing:3px;margin-bottom:10px;animation:pulse 2s infinite;transition:color .5s}
+.pc-name{font-size:24px;font-weight:700;letter-spacing:3px;color:var(--text);margin-bottom:2px}
+.pc-name span{color:var(--rankc);text-shadow:0 0 20px color-mix(in srgb, var(--rankc) 50%, transparent);transition:color .5s}
+.pc-title{font-family:var(--Mo);font-size:10px;color:var(--gold);letter-spacing:2px;margin-bottom:10px}
+.pc-rank-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:14px}
+.pc-rank-box{text-align:center;padding:8px 14px;border-radius:6px;border:1px solid var(--border);background:rgba(74,158,255,.06)}
+.pc-rank-v{font-family:var(--Mo);font-size:20px;font-weight:700}
+.pc-rank-l{font-size:9px;color:var(--muted);letter-spacing:1px;margin-top:2px}
+.pc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px}
+.pc-stat{text-align:center;padding:7px 4px;border-radius:5px;border:1px solid var(--border);background:rgba(74,158,255,.04)}
+.pc-stat-v{font-family:var(--Mo);font-size:14px;font-weight:700;color:var(--blue)}
+.pc-stat-l{font-size:8px;color:var(--muted);letter-spacing:.5px;margin-top:2px}
+.pc-attrs{display:flex;gap:6px;margin-bottom:10px}
+.pc-attr{flex:1;text-align:center}
+.pc-attr-bar{height:40px;background:rgba(74,158,255,.08);border-radius:3px;position:relative;overflow:hidden;margin-bottom:3px}
+.pc-attr-fill{position:absolute;bottom:0;left:0;right:0;border-radius:3px;transition:height .6s}
+.pc-attr-lbl{font-size:8px;color:var(--muted)}
+.pc-attr-val{font-size:8px;color:var(--muted);font-family:var(--Mo);margin-top:1px}
+.pc-ach-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.pc-ach-chip{font-size:14px;padding:4px 6px;border-radius:4px;background:rgba(240,192,64,.1);border:1px solid rgba(240,192,64,.2)}
+/* footer watermark */
+.pc-footer{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  padding-top:10px;margin-bottom:10px;
+  border-top:1px solid rgba(255,255,255,0.08);
+  font-family:var(--Mo);font-size:9px;letter-spacing:2px;
+  color:rgba(160,180,210,0.4);
+}
+.pc-footer .pc-foot-dot{width:3px;height:3px;border-radius:50%;background:var(--rankc);opacity:.6}
+.pc-footer .pc-foot-day{color:var(--rankc);opacity:.85}
+.pc-close-row{display:flex;gap:8px;margin-top:4px}
+.pc-close-btn{flex:1;padding:9px;background:transparent;border:1px solid var(--border);border-radius:4px;color:var(--muted);font-family:var(--M);font-size:13px;cursor:pointer;letter-spacing:1px}
+.pc-save-btn{flex:2;padding:9px;background:rgba(74,158,255,.15);border:1px solid rgba(74,158,255,.45);border-radius:4px;color:var(--blue);font-family:var(--M);font-size:13px;font-weight:600;cursor:pointer;letter-spacing:1px;transition:all .2s}
+.pc-save-btn:hover{background:var(--blue);color:#000}
+
+/* ── ACHIEVEMENT POPUP ── */
+.ach-popup{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(10,22,55,.96);border:1px solid var(--gold);backdrop-filter:blur(20px);border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:12px;z-index:5500;opacity:0;pointer-events:none;transition:all .4s;box-shadow:0 0 40px var(--gglow);max-width:90vw}
+.ach-popup.show{opacity:1}
+.ach-popup-icon{font-size:30px}
+.ach-popup-text{display:flex;flex-direction:column;gap:2px}
+.ach-popup-top{font-family:var(--Mo);font-size:9px;color:var(--gold);letter-spacing:3px}
+.ach-popup-name{font-size:15px;font-weight:700;color:var(--text)}
+.ach-popup-xp{font-family:var(--Mo);font-size:11px;color:var(--gold)}
+</style>
+</head>
+<body>
+<div class="profile-overlay" id="profile-overlay">
+  <div class="profile-card" id="profile-card">
+    <div class="pc-corner pc-tl"></div><div class="pc-corner pc-tr"></div>
+    <div class="pc-corner pc-bl"></div><div class="pc-corner pc-br"></div>
+    <div style="text-align:center;position:relative;z-index:1">
+      <div class="pc-sys">⟨ HUNTER PROFILE ⟩</div>
+      <div class="pc-name">HUNTER <span id="pc-name">ARISE</span></div>
+      <div class="pc-title" id="pc-title"></div>
+      <div class="pc-rank-row">
+        <div class="pc-rank-box"><div class="pc-rank-v" id="pc-lv" style="color:var(--blue)">1</div><div class="pc-rank-l">LEVEL</div></div>
+        <div class="pc-rank-box"><div class="pc-rank-v" id="pc-rank" style="color:var(--gold)">E</div><div class="pc-rank-l">RANK</div></div>
+        <div class="pc-rank-box"><div class="pc-rank-v" id="pc-streak" style="color:var(--green)">0</div><div class="pc-rank-l">STREAK</div></div>
+      </div>
+      <div class="pc-stats">
+        <div class="pc-stat"><div class="pc-stat-v" id="pc-txp">0</div><div class="pc-stat-l">TOTAL XP</div></div>
+        <div class="pc-stat"><div class="pc-stat-v" id="pc-qd">0</div><div class="pc-stat-l">QUESTS</div></div>
+        <div class="pc-stat"><div class="pc-stat-v" id="pc-ach">0</div><div class="pc-stat-l">BADGES</div></div>
+      </div>
+      <div class="pc-attrs" id="pc-attrs"></div>
+      <div class="pc-ach-row" id="pc-achs"></div>
+      <div class="pc-footer">
+        <span>HUNTER SYSTEM</span>
+        <span class="pc-foot-dot"></span>
+        <span class="pc-foot-day" id="pc-day">DAY 1</span>
+      </div>
+    </div>
+    <div class="pc-close-row">
+      <button class="pc-close-btn" onclick="closeProfile()">CLOSE</button>
+      <button class="pc-save-btn" onclick="saveProfileCard()">📸 SAVE AS IMAGE</button>
+    </div>
+  </div>
+</div>
+
+<!-- Achievement popup -->
+<div class="ach-popup" id="ach-popup">
+  <div class="ach-popup-icon" id="ap-icon">🏅</div>
+  <div class="ach-popup-text">
+    <div class="ach-popup-top">ACHIEVEMENT UNLOCKED</div>
+    <div class="ach-popup-name" id="ap-name">First Blood</div>
+    <div class="ach-popup-xp" id="ap-xp">+50 XP</div>
+  </div>
+</div>
+
+<canvas id="bg-cv"></canvas>
+<div class="bg-g"></div><div class="grid-o"></div><div class="scan-o"></div>
+<div class="c c-tl"></div><div class="c c-tr"></div><div class="c c-bl"></div><div class="c c-br"></div>
+<div class="toast" id="toast"></div>
+<div class="lvlup" id="lvlup"><div class="lub"><div class="lue">[ LEVEL UP ]</div><div class="lun" id="lu-num">2</div><div class="lur" id="lu-rank">E-RANK</div><button class="luc" onclick="closeLvlUp()">CONTINUE</button></div></div>
+<div class="mover" id="nm"><div class="mbox"><div class="mti">[ SET HUNTER NAME ]</div><input class="min" id="ni" maxlength="16" placeholder="YOUR NAME"/><div class="frow"><button class="badd" style="flex:1" onclick="saveName()">CONFIRM</button><button class="bcan" onclick="closeNM()">CANCEL</button></div></div></div>
+
+<div class="app">
+  <div class="hdr">
+    <div class="sys-a">⟨ SYSTEM NOTIFICATION ⟩</div>
+    <div class="hnw"><div class="hn">HUNTER <span id="hn-d">ARISE</span></div><button class="ebtn" onclick="openNM()">EDIT</button></div>
+    <div class="hunter-title-display" id="equipped-title-disp"></div>
+    <div class="rb" id="rb">E-RANK HUNTER</div>
+    <div style="margin-top:8px"><button class="ebtn" onclick="openProfile()" style="font-size:11px;padding:4px 12px">📋 PROFILE CARD</button></div>
+  </div>
+  <div class="streak"><span style="font-size:18px">🔥</span><span style="font-size:13px;color:var(--muted);letter-spacing:1px">DAILY STREAK</span><span class="sd" id="sd">0 DAYS</span></div>
+  <div class="gc xpw"><div class="xph"><span style="font-size:11px;color:var(--muted);letter-spacing:2px">EXPERIENCE POINTS</span><span style="font-family:var(--Mo);font-size:12px;color:var(--blue)" id="xpl">0 / 100 XP</span></div><div class="xpt"><div class="xpf" id="xpf" style="width:0%"></div></div></div>
+  <div class="sgrid">
+    <div class="gc sc" style="--ac:var(--blue)"><div class="sc-l">Level</div><div class="sc-v" id="d-lv">1</div></div>
+    <div class="gc sc" style="--ac:var(--gold)"><div class="sc-l">Total XP</div><div class="sc-v" id="d-tx">0</div><div class="sc-s">lifetime</div></div>
+    <div class="gc sc" style="--ac:var(--green)"><div class="sc-l">Quests Done</div><div class="sc-v" id="d-qd">0</div><div class="sc-s">all time</div></div>
+    <div class="gc sc" style="--ac:var(--purple)"><div class="sc-l">Rank</div><div class="sc-v" id="d-rk" style="font-size:18px;color:var(--blue)">E</div><div class="sc-s" id="d-rl">E-Rank</div></div>
+  </div>
+  <div class="tabs" id="tbr">
+    <button class="tab active" onclick="swT('quests',this)">Quests</button>
+    <button class="tab" onclick="swT('attrs',this)">Stats</button>
+    <button class="tab" onclick="swT('habits',this)">Habits</button>
+    <button class="tab" onclick="swT('rewards',this)">Rewards</button>
+    <button class="tab" onclick="swT('charts',this)">Charts</button>
+    <button class="tab" onclick="swT('settings',this)">⚙</button>
+  </div>
+
+  <!-- QUESTS -->
+  <div class="panel active" id="panel-quests">
+    <div class="sechdr"><div class="sect">Daily Quests</div><div class="secl"></div></div>
+    <!-- Weekly Challenge -->
+    <div id="wc-wrap"></div>
+    <!-- Category filter -->
+    <div class="cat-tabs" id="cat-tabs">
+      <button class="cat-tab active" onclick="setCat('all',this)">All</button>
+      <button class="cat-tab" onclick="setCat('body',this)">💪 Body</button>
+      <button class="cat-tab" onclick="setCat('mind',this)">🧠 Mind</button>
+      <button class="cat-tab" onclick="setCat('soul',this)">✨ Soul</button>
+    </div>
+    <div class="qlist" id="ql"></div>
+    <div class="addform" id="af">
+      <input class="fi" id="qn" placeholder="Quest name…" maxlength="52"/>
+      <div class="frow" style="margin-bottom:8px">
+        <select class="fsel" id="qst" style="flex:1;margin-bottom:0">
+          <option value="strength">⚔ Strength</option>
+          <option value="agility">💨 Agility</option>
+          <option value="endurance">🛡 Endurance</option>
+          <option value="intelligence">✦ Intelligence</option>
+          <option value="perception">👁 Perception</option>
+        </select>
+        <select class="fsel" id="qxv" style="flex:1;margin-bottom:0">
+          <option value="20">Easy +20 XP</option>
+          <option value="40" selected>Normal +40 XP</option>
+          <option value="70">Hard +70 XP</option>
+          <option value="100">Extreme +100 XP</option>
+        </select>
+      </div>
+      <div class="persist-row" onclick="document.getElementById('qpers').click()">
+        <input type="checkbox" id="qpers" onclick="event.stopPropagation()"/>
+        <label for="qpers">🔁 DAILY RECURRING</label>
+        <span>auto-restores each day</span>
+      </div>
+      <div class="frow" style="margin-bottom:8px">
+        <select class="fsel" id="qcat" style="flex:1;margin-bottom:0">
+          <option value="body">💪 Body</option>
+          <option value="mind">🧠 Mind</option>
+          <option value="soul">✨ Soul</option>
+        </select>
+      </div>
+      <div class="frow">
+        <button class="badd" onclick="addQuest()">+ ADD</button>
+        <button class="bcan" onclick="closeForm()">CANCEL</button>
+      </div>
+    </div>
+    <button class="addbtn" id="ofb" onclick="openForm()">+ CREATE QUEST</button>
+  </div>
+
+  <!-- ATTRS -->
+  <div class="panel" id="panel-attrs">
+    <div class="sechdr"><div class="sect">Hunter Attributes</div><div class="secl"></div></div>
+    <div id="al"></div>
+  </div>
+
+  <!-- CHARTS -->
+  <div class="panel" id="panel-charts">
+    <div class="sechdr"><div class="sect">Performance Charts</div><div class="secl"></div></div>
+    <div class="kdg" id="kdg"></div>
+    <div class="gc chart-card">
+      <div class="chart-t">ATTRIBUTE RADAR</div>
+      <canvas id="rc" style="display:block;width:100%;max-width:340px;margin:0 auto"></canvas>
+    </div>
+    <div class="gc chart-card">
+      <div class="chart-t">XP EARNED — LAST 7 DAYS</div>
+      <canvas id="bc" height="150"></canvas>
+    </div>
+    <div class="gc chart-card">
+      <div class="chart-t">TODAY'S COMPLETION</div>
+      <canvas id="dc" width="220" height="220" style="display:block;margin:0 auto"></canvas>
+    </div>
+    <div class="gc chart-card">
+      <div class="chart-t">RANK PROGRESSION — REAL TIME</div>
+      <canvas id="rpc" height="220" style="display:block;width:100%"></canvas>
+    </div>
+  </div>
+
+  <!-- HABITS -->
+  <div class="panel" id="panel-habits">
+    <div class="sechdr"><div class="sect">Habit Mechanics</div><div class="secl"></div></div>
+
+    <!-- Streak Shield -->
+    <div class="habit-section">
+      <div class="habit-section-title">STREAK SHIELD</div>
+      <div class="shield-card">
+        <div class="shield-icon" id="shield-icon">🛡</div>
+        <div class="shield-info">
+          <div class="shield-title">STREAK SHIELD</div>
+          <div class="shield-desc" id="shield-desc">Protects your streak from one missed day. Charges +1 every 7 days.</div>
+          <div class="shield-pips" id="shield-pips"></div>
+        </div>
+        <button class="shield-use-btn" id="shield-btn" onclick="useShield()">USE</button>
+      </div>
+    </div>
+
+    <!-- Weekly Challenge -->
+    <div class="habit-section">
+      <div class="habit-section-title">WEEKLY CHALLENGE</div>
+      <div id="wc-habits-wrap"></div>
+    </div>
+
+    <!-- Difficulty Scaling Info -->
+    <div class="habit-section">
+      <div class="habit-section-title">DIFFICULTY SCALING</div>
+      <div class="gc" style="padding:14px">
+        <div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:6px">⚡ Level-Based Scaling</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.8">
+          Quest XP scales with your hunter level.<br>
+          Higher level = higher bonus multiplier:
+        </div>
+        <div id="scaling-table" style="margin-top:10px;display:flex;flex-direction:column;gap:5px"></div>
+      </div>
+    </div>
+
+    <!-- Quest Categories Guide -->
+    <div class="habit-section">
+      <div class="habit-section-title">QUEST CATEGORIES</div>
+      <div class="gc" style="padding:14px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:20px">💪</span>
+          <div><div style="font-size:13px;font-weight:600;color:var(--text)">Body</div><div style="font-size:11px;color:var(--muted)">Physical health — exercise, sleep, nutrition</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:20px">🧠</span>
+          <div><div style="font-size:13px;font-weight:600;color:var(--text)">Mind</div><div style="font-size:11px;color:var(--muted)">Mental growth — reading, study, meditation</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:20px">✨</span>
+          <div><div style="font-size:13px;font-weight:600;color:var(--text)">Soul</div><div style="font-size:11px;color:var(--muted)">Wellbeing — journaling, gratitude, creativity</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REWARDS -->
+  <div class="panel" id="panel-rewards">
+    <div class="sechdr"><div class="sect">Achievements</div><div class="secl"></div></div>
+    <div class="ach-grid" id="ach-grid"></div>
+
+    <div class="sechdr" style="margin-top:1.2rem"><div class="sect">Titles</div><div class="secl"></div></div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:10px;letter-spacing:.5px">Tap an unlocked title to equip it. Displays below your name.</div>
+    <div class="title-list" id="title-list"></div>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="panel" id="panel-history">
+    <div class="sechdr"><div class="sect">Activity Log</div><div class="secl"></div></div>
+    <div class="hlist" id="hlist"></div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="panel" id="panel-settings">
+    <div class="sechdr"><div class="sect">Settings</div><div class="secl"></div></div>
+    <div class="gc ic"><div class="ict">HUNTER PROFILE</div><div style="display:flex;align-items:center;gap:10px"><div style="flex:1"><div style="font-size:13px;color:var(--muted)">Hunter Name</div><div style="font-family:var(--Mo);font-size:16px;letter-spacing:2px;color:var(--blue)" id="snd">ARISE</div></div><button class="ebtn" onclick="openNM()">CHANGE</button></div></div>
+    <div class="swtog"><span style="font-size:18px">🔊</span><span class="swl">SOUND EFFECTS</span><label class="sw"><input type="checkbox" id="stog" checked onchange="toggleSound(this.checked)"/><span class="swsl"></span></label></div>
+
+    <!-- THEME SELECTOR -->
+    <div class="gc ic" id="theme-card">
+      <div class="ict">THEME</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <!-- Default Blue -->
+        <div class="theme-option" id="theme-opt-default" onclick="setTheme('default')" style="display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:6px;border:1px solid rgba(74,158,255,0.3);background:rgba(74,158,255,0.07);cursor:pointer;transition:all .2s">
+          <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#4a9eff,#8b5cf6);box-shadow:0 0 10px rgba(74,158,255,0.5);flex-shrink:0"></div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:700;color:var(--text)">System Blue</div>
+            <div style="font-size:10px;color:var(--muted)">Default hunter interface</div>
+          </div>
+          <span id="theme-badge-default" style="font-family:var(--Mo);font-size:9px;padding:2px 8px;border-radius:10px;background:rgba(74,158,255,.15);border:1px solid rgba(74,158,255,.4);color:#4a9eff">ACTIVE</span>
+        </div>
+        <!-- Monarch Red -->
+        <div class="theme-option" id="theme-opt-monarch" onclick="setTheme('monarch')" style="display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:6px;border:1px solid rgba(220,40,60,0.3);background:rgba(220,40,60,0.07);cursor:pointer;transition:all .2s;position:relative;overflow:hidden">
+          <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#e03050,#800010);box-shadow:0 0 10px rgba(220,40,60,0.5);flex-shrink:0"></div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:700;color:var(--text)">Shadow Monarch 👑</div>
+            <div style="font-size:10px;color:var(--muted)" id="monarch-theme-desc">Unlock at Level 50</div>
+          </div>
+          <span id="theme-badge-monarch" style="font-family:var(--Mo);font-size:9px;padding:2px 8px;border-radius:10px;background:rgba(220,40,60,.1);border:1px solid rgba(220,40,60,.3);color:#e03050">LOCKED</span>
+          <div id="monarch-lock-veil" style="position:absolute;inset:0;background:rgba(0,0,0,0.35);pointer-events:none;border-radius:6px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="gc ic"><div class="ict">RECURRING QUESTS</div><div style="font-size:12px;color:var(--dim);line-height:1.9;font-family:var(--Mo)">Toggle 🔁 when creating a quest.<br>Recurring quests auto-reset each day<br>so you never need to re-add them.</div></div>
+    <div class="gc ic"><div class="ict">INSTALL ON MAC</div><div style="font-size:12px;color:var(--dim);line-height:2;font-family:var(--Mo)">Keep .html + .sh together<br>Terminal: <span style="color:var(--blue)">bash CREATE_DOCK_APP.sh</span><br>~/Applications → drag to Dock</div></div>
+    <div class="dz"><div class="dzt">DANGER ZONE</div><button class="bdg" onclick="resetConfirm()">RESET ALL PROGRESS</button><div class="abt2">All data stored locally.<br>v4.0 — Solo Leveling Tracker</div></div>
+  </div>
+</div>
+
+<div class="bnav">
+  <button class="nb active" id="nav-quests" onclick="swN('quests')"><span class="ni">⚔</span>QUESTS</button>
+  <button class="nb" id="nav-attrs" onclick="swN('attrs')"><span class="ni">📊</span>STATS</button>
+  <button class="nb" id="nav-habits" onclick="swN('habits')"><span class="ni">🛡</span>HABITS</button>
+  <button class="nb" id="nav-rewards" onclick="swN('rewards')"><span class="ni">🏆</span>REWARDS</button>
+  <button class="nb" id="nav-charts" onclick="swN('charts')"><span class="ni">📈</span>CHARTS</button>
+  <button class="nb" id="nav-settings" onclick="swN('settings')"><span class="ni">⚙</span>SET</button>
+</div>
+
+<script>
+// ════ PARTICLE BG ════
+(()=>{
+  const cv=document.getElementById('bg-cv'),ctx=cv.getContext('2d');
+  let W,H,pts=[];
+  const resize=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight;pts=[];const n=Math.floor(W*H/12000);for(let i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.16,vy:(Math.random()-.5)*.16,r:Math.random()*1.5+.4,a:Math.random()*Math.PI*2})};
+  const draw=()=>{ctx.clearRect(0,0,W,H);for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;p.a+=.004;const al=.15+.1*Math.sin(p.a);ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(74,158,255,${al})`;ctx.fill()}for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<85){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(74,158,255,${.07*(1-d/85)})`;ctx.lineWidth=.6;ctx.stroke()}}requestAnimationFrame(draw)};
+  window.addEventListener('resize',resize);resize();draw();
+})();
+
+// ════ ACHIEVEMENTS ════
+const ACHIEVEMENTS=[
+  // Quest milestones
+  {id:'first_blood',  icon:'🗡',name:'First Blood',     desc:'Complete your first quest',           xp:50,  color:'#4a9eff', check:s=>s.totalQuestsDone>=1},
+  {id:'quests_10',    icon:'⚔',name:'Warrior\'s Path', desc:'Complete 10 quests total',             xp:80,  color:'#4a9eff', check:s=>s.totalQuestsDone>=10},
+  {id:'quests_50',    icon:'🔱',name:'Veteran Hunter',  desc:'Complete 50 quests total',             xp:150, color:'#8b5cf6', check:s=>s.totalQuestsDone>=50},
+  {id:'quests_100',   icon:'💎',name:'Elite Slayer',    desc:'Complete 100 quests',                  xp:300, color:'#f0c040', check:s=>s.totalQuestsDone>=100},
+  // Streak achievements
+  {id:'streak_3',     icon:'🔥',name:'On Fire',         desc:'Maintain a 3-day streak',             xp:60,  color:'#f97316', check:s=>s.streak>=3},
+  {id:'streak_7',     icon:'🌟',name:'Iron Will',       desc:'Maintain a 7-day streak',             xp:120, color:'#f97316', check:s=>s.streak>=7},
+  {id:'streak_30',    icon:'👑',name:'Unstoppable',     desc:'Maintain a 30-day streak',             xp:500, color:'#f0c040', check:s=>s.streak>=30},
+  // Level milestones
+  {id:'level_5',      icon:'📈',name:'Rising Hunter',   desc:'Reach level 5',                        xp:80,  color:'#22c55e', check:s=>s.level>=5},
+  {id:'level_10',     icon:'⚡',name:'Awakened',        desc:'Reach level 10',                       xp:120, color:'#22c55e', check:s=>s.level>=10},
+  {id:'level_20',     icon:'🌀',name:'Breaking Limits', desc:'Reach level 20',                       xp:200, color:'#8b5cf6', check:s=>s.level>=20},
+  {id:'level_50',     icon:'🦅',name:'S-Rank Hunter',   desc:'Reach level 50',                       xp:400, color:'#f0c040', check:s=>s.level>=50},
+  {id:'level_100',    icon:'🕳',name:'Shadow Monarch',  desc:'Reach level 100 — true power',         xp:1000,color:'#ff6eb4', check:s=>s.level>=100},
+  // Attribute achievements
+  {id:'attr_warrior', icon:'🛡',name:'Body of Steel',   desc:'Reach Warrior level in any attribute', xp:100, color:'#ef4444', check:s=>Object.values(s.attrs).some(v=>v>=50)},
+  {id:'attr_knight',  icon:'🗡',name:'Knight\'s Honor', desc:'Reach Knight in any attribute',        xp:180, color:'#4a9eff', check:s=>Object.values(s.attrs).some(v=>v>=100)},
+  {id:'attr_shadow',  icon:'👁',name:'Shadow\'s Gaze',  desc:'Reach Shadow in any attribute',        xp:400, color:'#8b5cf6', check:s=>Object.values(s.attrs).some(v=>v>=700)},
+  // XP achievements
+  {id:'xp_500',       icon:'✨',name:'Power Surge',     desc:'Earn 500 total XP',                    xp:50,  color:'#4a9eff', check:s=>s.totalXp>=500},
+  {id:'xp_5000',      icon:'💥',name:'Dungeon Breaker', desc:'Earn 5,000 total XP',                  xp:150, color:'#8b5cf6', check:s=>s.totalXp>=5000},
+  {id:'xp_50000',     icon:'🌌',name:'Monarch\'s Power',desc:'Earn 50,000 total XP',                 xp:500, color:'#ff6eb4', check:s=>s.totalXp>=50000},
+  // Special
+  {id:'all_daily',    icon:'🏅',name:'Perfect Day',     desc:'Complete all daily quests in one day', xp:100, color:'#f0c040', check:s=>s._perfectDay===true},
+  {id:'weekly_done',  icon:'🏆',name:'Weekly Champion', desc:'Complete a weekly challenge',          xp:80,  color:'#f0c040', check:s=>s._weeklyDone===true},
+];
+
+// ════ TITLES ════
+const TITLES=[
+  {id:'weakest',   icon:'😔',name:'The Weakest Hunter',  cond:'Starting title',               unlockFn:()=>true},
+  {id:'erank',     icon:'⚔',name:'E-Rank Hunter',        cond:'Reach level 5',                unlockFn:s=>s.level>=5},
+  {id:'drank',     icon:'🗡',name:'D-Rank Hunter',        cond:'Reach level 10',               unlockFn:s=>s.level>=10},
+  {id:'crank',     icon:'🔵',name:'C-Rank Hunter',        cond:'Reach level 20',               unlockFn:s=>s.level>=20},
+  {id:'brave',     icon:'🔥',name:'The Undying',          cond:'7-day streak',                 unlockFn:s=>s.streak>=7},
+  {id:'scholar',   icon:'📚',name:'Seeker of Knowledge',  cond:'50 total quests',              unlockFn:s=>s.totalQuestsDone>=50},
+  {id:'grinder',   icon:'⚡',name:'Tireless Grinder',     cond:'1,000 total XP',               unlockFn:s=>s.totalXp>=1000},
+  {id:'srank',     icon:'✦',name:'S-Rank Hunter',         cond:'Reach level 50',               unlockFn:s=>s.level>=50},
+  {id:'national',  icon:'🌟',name:'National Level Hunter', cond:'30-day streak',               unlockFn:s=>s.streak>=30},
+  {id:'monarch',   icon:'👑',name:'The Shadow Monarch',   cond:'Reach level 100',              unlockFn:s=>s.level>=100},
+];
+
+// ════ THEME ENGINE ════
+const THEMES={
+  default:{name:'System Blue',   body:'',           accent:'#4a9eff'},
+  monarch:{name:'Shadow Monarch', body:'monarch-theme', accent:'#e03050', minLevel:50},
+};
+
+function applyTheme(id){
+  const t=THEMES[id]||THEMES.default;
+  document.body.className=t.body||'';
+  renderThemeCard();
+}
+
+function setTheme(id){
+  const t=THEMES[id];
+  if(!t)return;
+  if(t.minLevel&&S.level<t.minLevel){
+    showToast('🔒 REACH LEVEL '+t.minLevel+' TO UNLOCK',false);return;
+  }
+  S.equippedTheme=id;persist();
+  applyTheme(id);
+  tone(600,'sine',.1,.2);tone(800,'sine',.1,.2,.1);tone(1000,'sine',.15,.2,.2);
+  showToast('🎨 '+t.name.toUpperCase()+' THEME APPLIED',false);
+}
+
+function renderThemeCard(){
+  const cur=S.equippedTheme||'default';
+  const monarchUnlocked=S.level>=50;
+
+  const defBadge=document.getElementById('theme-badge-default');
+  const monBadge=document.getElementById('theme-badge-monarch');
+  const monDesc=document.getElementById('monarch-theme-desc');
+  const monVeil=document.getElementById('monarch-lock-veil');
+  const monOpt=document.getElementById('theme-opt-monarch');
+  if(!defBadge)return;
+
+  // Default option
+  if(cur==='default'){
+    defBadge.textContent='ACTIVE';defBadge.style.color='#4a9eff';
+    defBadge.style.background='rgba(74,158,255,.15)';defBadge.style.borderColor='rgba(74,158,255,.4)';
+    document.getElementById('theme-opt-default').style.borderColor='rgba(74,158,255,0.6)';
+    document.getElementById('theme-opt-default').style.boxShadow='0 0 14px rgba(74,158,255,0.2)';
+  } else {
+    defBadge.textContent='SELECT';defBadge.style.color='var(--muted)';
+    defBadge.style.background='transparent';defBadge.style.borderColor='var(--border)';
+    document.getElementById('theme-opt-default').style.boxShadow='none';
+  }
+
+  // Monarch option
+  if(monarchUnlocked){
+    monVeil.style.display='none';
+    monOpt.style.cursor='pointer';
+    if(cur==='monarch'){
+      monBadge.textContent='ACTIVE';monBadge.style.color='#e03050';
+      monBadge.style.background='rgba(220,40,60,.2)';monBadge.style.borderColor='rgba(220,40,60,.6)';
+      monOpt.style.borderColor='rgba(220,40,60,0.6)';monOpt.style.boxShadow='0 0 14px rgba(220,40,60,0.25)';
+    } else {
+      monBadge.textContent='SELECT';monBadge.style.color='#e03050';
+      monBadge.style.background='rgba(220,40,60,.08)';monBadge.style.borderColor='rgba(220,40,60,.3)';
+      monOpt.style.boxShadow='none';
+    }
+    monDesc.textContent='Dark red — for true monarchs';
+  } else {
+    monVeil.style.display='block';
+    monOpt.style.cursor='default';
+    monDesc.textContent='Unlock at Level 50 (current: Lv.'+S.level+')';
+    monBadge.textContent='LV.'+S.level+'/50';
+  }
+}
+
+// ════ SOUND ════
+let audioCtx=null,soundEnabled=true;
+function getAC(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();return audioCtx}
+function tone(f,t,d,g,dl=0){if(!soundEnabled)return;try{const c=getAC(),o=c.createOscillator(),gn=c.createGain();o.connect(gn);gn.connect(c.destination);o.type=t;o.frequency.setValueAtTime(f,c.currentTime+dl);gn.gain.setValueAtTime(g,c.currentTime+dl);gn.gain.exponentialRampToValueAtTime(.001,c.currentTime+dl+d);o.start(c.currentTime+dl);o.stop(c.currentTime+dl+d)}catch(e){}}
+function sQC(){tone(440,'sine',.15,.3);tone(554,'sine',.15,.3,.1);tone(659,'sine',.25,.3,.2)}
+function sLU(){[261,329,392,523,659,784].forEach((f,i)=>tone(f,'sine',.2,.25,i*.08));setTimeout(()=>{tone(784,'sine',.4,.3);tone(1046,'sine',.5,.25,.1)},600)}
+function sDel(){tone(300,'square',.08,.15);tone(200,'square',.1,.1,.05)}
+function sClk(){tone(800,'sine',.05,.08)}
+function sAdd(){tone(500,'sine',.1,.15);tone(700,'sine',.12,.12,.08)}
+function sTr(){tone(600,'triangle',.12,.2);tone(750,'triangle',.1,.15,.1)}
+function toggleSound(on){soundEnabled=on;S.soundEnabled=on;persist()}
+
+// ════ CONSTANTS ════
+const RANKS=[
+  {min:1,label:'E-Rank Hunter',letter:'E',color:'#64748b'},
+  {min:5,label:'D-Rank Hunter',letter:'D',color:'#22c55e'},
+  {min:10,label:'C-Rank Hunter',letter:'C',color:'#4a9eff'},
+  {min:20,label:'B-Rank Hunter',letter:'B',color:'#8b5cf6'},
+  {min:35,label:'A-Rank Hunter',letter:'A',color:'#f97316'},
+  {min:50,label:'S-Rank Hunter',letter:'S',color:'#f0c040'},
+  {min:75,label:'National Level',letter:'N',color:'#ef4444'},
+  {min:100,label:'Monarch',letter:'M',color:'#ff6eb4'},
+];
+const ATTRS={
+  strength:    {label:'Strength',    icon:'⚔',color:'#ef4444',dark:'#1a0606',char:'Sung Jin-Woo'},
+  agility:     {label:'Agility',     icon:'💨',color:'#22c55e',dark:'#06160a',char:'Cha Hae-In'},
+  endurance:   {label:'Endurance',   icon:'🛡',color:'#4a9eff',dark:'#050f1c',char:'Thomas Andre'},
+  intelligence:{label:'Intelligence',icon:'✦',color:'#8b5cf6',dark:'#100620',char:'Go Gunhee'},
+  perception:  {label:'Perception',  icon:'👁',color:'#b060ff',dark:'#150a1e',char:'Jin-Woo Monarch'},
+};
+
+// ════ CREST ICON SET (Option E — faceted hex badge) ════
+// Returns an inline SVG string sized to `size` px, fully self-contained.
+const CREST_GLYPHS={
+  strength:    (c)=>`<path d="M21 38 L36 22 M33 18 L40 18 L40 25" stroke="${c}" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 38 L17 42" stroke="${c}" stroke-width="2.4" stroke-linecap="round"/>`,
+  agility:     (c)=>`<path d="M16 23 Q34 23 34 17 Q34 13 30 13 Q27 13 26 16" stroke="${c}" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M16 30 Q44 30 44 36 Q44 41 39 41 Q35 41 34 37" stroke="${c}" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M16 41 H26" stroke="${c}" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.7"/>`,
+  endurance:   (c)=>`<path d="M30 14 L43 19.5 V30 Q43 41 30 46 Q17 41 17 30 V19.5 Z" stroke="${c}" stroke-width="2.2" fill="none" stroke-linejoin="round"/><path d="M24 29 L29 34 L37 24" stroke="${c}" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+  intelligence:(c)=>`<path d="M30 16 C38 16 41 23 36 28 C33.5 30.5 33.5 33 33.5 36 H26.5 C26.5 33 26.5 30.5 24 28 C19 23 22 16 30 16 Z" stroke="${c}" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 40 H34" stroke="${c}" stroke-width="2.2" stroke-linecap="round"/><path d="M27 44 H33" stroke="${c}" stroke-width="2.2" stroke-linecap="round" opacity="0.7"/>`,
+  perception:  (c)=>`<path d="M15 30 Q30 17 45 30 Q30 43 15 30 Z" stroke="${c}" stroke-width="2.2" fill="none" stroke-linejoin="round"/><circle cx="30" cy="30" r="6" fill="none" stroke="${c}" stroke-width="2.2"/><circle cx="30" cy="30" r="2" fill="${c}"/>`,
+};
+
+function crestSVG(stat,size=28){
+  const m=ATTRS[stat];if(!m)return'';
+  const c=m.color,d=m.dark||'#0a0a14';
+  const glyph=CREST_GLYPHS[stat]?CREST_GLYPHS[stat](c):'';
+  return `<svg width="${size}" height="${size}" viewBox="0 0 60 60" style="display:block;flex-shrink:0">
+    <path d="M30 5 L51 17.5 V42.5 L30 55 L9 42.5 V17.5 Z" fill="${d}" stroke="${c}" stroke-width="1.4"/>
+    <path d="M30 5 L51 17.5 V42.5 L30 55" fill="none" stroke="${c}60" stroke-width="1.4"/>
+    ${glyph}
+  </svg>`;
+}
+const ALVLS=[
+  {pts:0,label:'Novice'},{pts:20,label:'Apprentice'},{pts:50,label:'Warrior'},
+  {pts:100,label:'Knight'},{pts:200,label:'Master'},{pts:400,label:'Elite'},
+  {pts:700,label:'Shadow'},{pts:1000,label:'Monarch'},
+];
+function getAL(v){let l=ALVLS[0];for(const x of ALVLS){if(v>=x.pts)l=x}const idx=ALVLS.indexOf(l),next=ALVLS[idx+1];return{label:l.label,idx,next,pct:next?Math.round((v-l.pts)/(next.pts-l.pts)*100):100}}
+
+const DEFAULT_QUESTS=[
+  {id:1,name:'Morning Exercise (30 min)',stat:'strength',    xp:40,done:false,persist:true,cat:'body'},
+  {id:2,name:'Drink 2L of Water',        stat:'endurance',  xp:20,done:false,persist:true,cat:'body'},
+  {id:3,name:'Read for 30 Minutes',      stat:'intelligence',xp:40,done:false,persist:true,cat:'mind'},
+  {id:4,name:'Meditate (10 min)',         stat:'perception', xp:20,done:false,persist:true,cat:'soul'},
+  {id:5,name:'Walk / Run 5000+ Steps',   stat:'agility',    xp:70,done:false,persist:true,cat:'body'},
+];
+
+// ── Weekly Challenge Templates ──
+const WC_POOL=[
+  {id:'wc1', name:'Iron Will',       desc:'Complete all daily quests for 3 days in a row this week.',  type:'streak_days', target:3, reward:150, icon:'🔥'},
+  {id:'wc2', name:'Warrior\'s Trial', desc:'Complete 15 quests total this week.',                       type:'total_quests',target:15,reward:200, icon:'⚔'},
+  {id:'wc3', name:'Mind & Body',      desc:'Complete at least 2 Body and 2 Mind quests this week.',      type:'mixed_cats',  target:4, reward:120, icon:'🧠'},
+  {id:'wc4', name:'Soul Seeker',      desc:'Complete 5 Soul category quests this week.',                  type:'cat_soul',    target:5, reward:100, icon:'✨'},
+  {id:'wc5', name:'Grinding Season',  desc:'Earn 400+ XP in a single week.',                             type:'weekly_xp',   target:400,reward:180,icon:'💎'},
+  {id:'wc6', name:'No Rest for Hunters',desc:'Open the app and complete at least 1 quest every day.',    type:'active_days', target:7, reward:300, icon:'🏹'},
+  {id:'wc7', name:'Body Temple',      desc:'Complete 8 Body category quests this week.',                  type:'cat_body',    target:8, reward:160, icon:'💪'},
+  {id:'wc8', name:'Scholar\'s Path',  desc:'Complete 6 Mind category quests this week.',                  type:'cat_mind',    target:6, reward:140, icon:'📚'},
+];
+
+function getWeekKey(){const d=new Date();const day=d.getDay();const mon=new Date(d);mon.setDate(d.getDate()-(day===0?6:day-1));return mon.toISOString().slice(0,10)}
+function getDaysLeftInWeek(){const d=new Date();const day=d.getDay();const daysLeft=day===0?0:7-day;return daysLeft}
+
+function getCurrentWC(){
+  const wk=getWeekKey();
+  if(!S.weeklyChallenge||S.weeklyChallenge.weekKey!==wk){
+    // pick a new challenge for this week (rotate by week number)
+    const weekNum=Math.floor(new Date(wk).getTime()/604800000);
+    const tmpl=WC_POOL[weekNum%WC_POOL.length];
+    S.weeklyChallenge={weekKey:wk,id:tmpl.id,progress:0,claimed:false};
+    persist();
+  }
+  return WC_POOL.find(w=>w.id===S.weeklyChallenge.id)||WC_POOL[0];
+}
+
+function updateWCProgress(questDone, cat, xpEarned){
+  if(!S.weeklyChallenge)getCurrentWC();
+  const wc=getCurrentWC();
+  const wcs=S.weeklyChallenge;
+  if(wcs.claimed)return;
+  let inc=0;
+  if(wc.type==='total_quests'&&questDone)inc=1;
+  else if(wc.type==='cat_body'&&questDone&&cat==='body')inc=1;
+  else if(wc.type==='cat_mind'&&questDone&&cat==='mind')inc=1;
+  else if(wc.type==='cat_soul'&&questDone&&cat==='soul')inc=1;
+  else if(wc.type==='weekly_xp'&&xpEarned)inc=xpEarned;
+  else if(wc.type==='active_days'&&questDone){
+    const dk=todayKey();if(!wcs.activeDays)wcs.activeDays=[];if(!wcs.activeDays.includes(dk)){wcs.activeDays.push(dk);inc=1}}
+  else if(wc.type==='streak_days'&&questDone){
+    const dk=todayKey();if(!wcs.streakDays)wcs.streakDays=[];
+    if(!wcs.streakDays.includes(dk)){
+      const prev=new Date(dk);prev.setDate(prev.getDate()-1);
+      if(wcs.streakDays.includes(prev.toISOString().slice(0,10))||wcs.streakDays.length===0){wcs.streakDays.push(dk);inc=1}
+      else{wcs.streakDays=[dk];wcs.progress=0;inc=1}}}
+  else if(wc.type==='mixed_cats'&&questDone){
+    if(!wcs.catCounts)wcs.catCounts={body:0,mind:0,soul:0};
+    wcs.catCounts[cat]=(wcs.catCounts[cat]||0)+1;
+    wcs.progress=Math.min(wc.target,Math.min(2,wcs.catCounts.body||0)+Math.min(2,wcs.catCounts.mind||0));
+    persist();return;}
+  if(inc>0){wcs.progress=Math.min(wc.target,(wcs.progress||0)+inc);persist();}
+  if(!wcs.claimed&&wcs.progress>=wc.target){claimWC();}
+}
+
+function claimWC(){
+  if(!S.weeklyChallenge||S.weeklyChallenge.claimed)return;
+  const wc=getCurrentWC();
+  S.weeklyChallenge.claimed=true;
+  S._weeklyDone=true;
+  S.xp+=wc.reward;S.totalXp+=wc.reward;
+  let leveled=false;while(S.xp>=xpN(S.level)){S.xp-=xpN(S.level);S.level++;leveled=true}
+  persist();checkAchievements();logProgress();persist();
+  if(leveled){render();setTimeout(()=>{sLU();showLvlUp(S.level,getRank(S.level).label.toUpperCase())},400)}
+  else{showToast('🏆 CHALLENGE COMPLETE! +'+wc.reward+' XP',true);render()}
+}
+
+// ════ STATE ════
+let S;
+function loadState(){
+  try{const r=localStorage.getItem('sl_v4');if(r)S=JSON.parse(r)}catch(e){}
+  if(!S)S={name:'ARISE',level:1,xp:0,totalXp:0,streak:0,lastDate:null,totalQuestsDone:0,
+    attrs:{strength:0,agility:0,endurance:0,intelligence:0,perception:0},
+    quests:JSON.parse(JSON.stringify(DEFAULT_QUESTS)),
+    history:[],nextId:6,soundEnabled:true,dailyXp:{},
+    shield:{charges:1,maxCharges:3,lastChargeWeek:null,usedThisWeek:false},
+    weeklyChallenge:null,
+    weeklyQuestsDone:{},
+    unlockedAchs:[],
+    equippedTitle:'weakest',
+  };
+  if(!S.unlockedAchs)S.unlockedAchs=[];
+  if(!S.equippedTitle)S.equippedTitle='weakest';
+  if(!S.equippedTheme)S.equippedTheme='default';
+  if(!S.joinedAt)S.joinedAt=Date.now();
+  if(S.quests)S.quests.forEach(q=>{if(!q.cat)q.cat='body'});
+  // initialize progress log — for existing players with no log yet,
+  // seed it with their current state so the chart has a valid starting point
+  if(!S.progressLog||!S.progressLog.length){
+    S.progressLog=[{ts:Date.now()-86400000,level:1,totalXp:0},{ts:Date.now(),level:S.level,totalXp:S.totalXp}];
+  }
+  soundEnabled=S.soundEnabled!==false;
+  const t=document.getElementById('stog');if(t)t.checked=soundEnabled;
+  applyTheme(S.equippedTheme);
+}
+function persist(){localStorage.setItem('sl_v4',JSON.stringify(S))}
+function todayKey(){return new Date().toISOString().slice(0,10)}
+
+// ════ PROGRESS LOG ════
+// A dedicated, append-only log of {ts, level, totalXp} snapshots used ONLY for
+// the rank progression chart. This guarantees the chart always matches real
+// state exactly — no re-simulation, no date-string parsing, no drift.
+function logProgress(){
+  if(!S.progressLog)S.progressLog=[];
+  const last=S.progressLog[S.progressLog.length-1];
+  // avoid duplicate consecutive snapshots with identical level+xp
+  if(last&&last.level===S.level&&last.totalXp===S.totalXp)return;
+  S.progressLog.push({ts:Date.now(),level:S.level,totalXp:S.totalXp});
+  if(S.progressLog.length>1000)S.progressLog=S.progressLog.slice(-1000);
+}
+
+// ════ XP / RANK ════
+function xpN(l){return Math.floor(100*Math.pow(1.45,l-1))}
+function getRank(l){let r=RANKS[0];for(const x of RANKS){if(l>=x.min)r=x}return r}
+
+// ════ DAILY CHECK ════
+function dailyCheck(){
+  const today=new Date().toDateString();
+  if(!S.lastDate){S.lastDate=today;persist();return}
+  if(S.lastDate===today)return;
+  const diff=Math.round((new Date(today)-new Date(S.lastDate))/86400000);
+
+  if(diff===1){
+    S.streak++;
+  } else if(diff>1){
+    // missed day — check shield
+    if(!S.shield)S.shield={charges:1,maxCharges:3,lastChargeWeek:null,usedThisWeek:false};
+    if(S.shield.charges>0&&!S.shield.usedThisWeek){
+      S.shield.charges--;S.shield.usedThisWeek=true;
+      // streak preserved — notify on next render
+      S.shieldUsedMsg=true;
+    } else {
+      S.streak=0;
+    }
+  }
+
+  // weekly shield recharge
+  if(!S.shield)S.shield={charges:1,maxCharges:3,lastChargeWeek:null,usedThisWeek:false};
+  const wk=getWeekKey();
+  if(S.shield.lastChargeWeek!==wk){
+    S.shield.lastChargeWeek=wk;
+    S.shield.usedThisWeek=false;
+    if(S.shield.charges<S.shield.maxCharges)S.shield.charges++;
+  }
+
+  S.quests.forEach(q=>{if(q.persist)q.done=false});
+  S.lastDate=today;
+  persist();
+}
+
+// ════ RENDER ════
+function render(){
+  dailyCheck();
+  const needed=xpN(S.level),pct=Math.min(100,Math.round(S.xp/needed*100));
+  document.getElementById('xpf').style.width=pct+'%';
+  document.getElementById('xpl').textContent=S.xp+' / '+needed+' XP';
+  document.getElementById('d-lv').textContent=S.level;
+  document.getElementById('d-tx').textContent=S.totalXp.toLocaleString();
+  document.getElementById('d-qd').textContent=S.totalQuestsDone;
+  const rank=getRank(S.level);
+  document.getElementById('d-rk').textContent=rank.letter;
+  document.getElementById('d-rk').style.color=rank.color;
+  document.getElementById('d-rl').textContent=rank.label;
+  document.getElementById('rb').textContent=rank.label.toUpperCase();
+  document.getElementById('sd').textContent=S.streak+' DAYS';
+  document.getElementById('hn-d').textContent=S.name;
+  const snd=document.getElementById('snd');if(snd)snd.textContent=S.name;
+  const st=document.getElementById('stog');if(st)st.checked=soundEnabled;
+  // equipped title
+  const eqT=TITLES.find(t=>t.id===S.equippedTitle);
+  const tDisp=document.getElementById('equipped-title-disp');
+  if(tDisp)tDisp.textContent=eqT?eqT.icon+' '+eqT.name:'';
+
+  renderQuests();renderAttrs();renderCharts();renderHistory();renderHabits();renderRewards();renderThemeCard();
+  if(S.shieldUsedMsg){S.shieldUsedMsg=false;persist();setTimeout(()=>showToast('🛡 STREAK SHIELD ACTIVATED — streak preserved!',false),600)}
+}
+
+// ── Category filter ──
+let activeCat='all';
+function setCat(cat,btn){
+  activeCat=cat;
+  document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  renderQuests();
+}
+
+// ── render quests ──
+function renderQuests(){
+  // render weekly challenge mini-card in quest panel
+  const wcWrap=document.getElementById('wc-wrap');
+  if(wcWrap)wcWrap.innerHTML=renderWCCard(true);
+
+  const el=document.getElementById('ql');el.innerHTML='';
+  let visible=S.quests.filter(q=>q.persist||!q.done);
+  if(activeCat!=='all')visible=visible.filter(q=>(q.cat||'body')===activeCat);
+
+  if(!visible.length){
+    el.innerHTML=`<div class="hempty">${activeCat==='all'?'NO QUESTS':'NO '+activeCat.toUpperCase()+' QUESTS'}<br><span style="font-size:10px">${activeCat!=='all'?'Switch category or create one below':'Create a quest below'}</span></div>`;
+    return;
+  }
+
+  // ── Difficulty scaling multiplier ──
+  function scaledXP(baseXP){
+    const lv=S.level;
+    if(lv>=50)return Math.round(baseXP*2.0);
+    if(lv>=35)return Math.round(baseXP*1.7);
+    if(lv>=20)return Math.round(baseXP*1.4);
+    if(lv>=10)return Math.round(baseXP*1.2);
+    return baseXP;
+  }
+  const isScaled=S.level>=10;
+
+  const catIcons={body:'💪',mind:'🧠',soul:'✨'};
+  visible.forEach(q=>{
+    const m=ATTRS[q.stat];
+    const base=q.xp, scaled=scaledXP(base);
+    const div=document.createElement('div');
+    div.className='quest'+(q.done?' done':'');
+    div.dataset.id=q.id;
+    const persistBadge=`<span class="qpbadge${q.persist?' on':''}" data-pid="${q.id}">${q.persist?'🔁':'1×'}</span>`;
+    const catBadge=`<span style="font-size:10px">${catIcons[q.cat||'body']}</span>`;
+    const scaleBadge=isScaled&&scaled>base?`<span class="diff-badge diff-scaled">⚡×${(scaled/base).toFixed(1)}</span>`:'';
+    div.innerHTML=`
+      <div class="qbody">
+        <div class="qchk">${q.done?'✓':''}</div>
+        <div class="qinfo">
+          <div class="qname">${esc(q.name)}</div>
+          <div class="qsub">
+            <span style="display:inline-flex;align-items:center;gap:4px;color:${m.color}">${crestSVG(q.stat,16)} ${m.label}</span>
+            ${catBadge}${persistBadge}
+            <span class="qdel" data-del="${q.id}">✕</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px">
+          <div class="qxp">+${scaled} XP</div>
+          ${scaleBadge}
+        </div>
+      </div>
+    `;
+    div.addEventListener('click',function(e){
+      if(e.target.closest('.qdel')||e.target.closest('.qpbadge'))return;
+      if(!q.done)completeQuest(q.id);
+    });
+    el.appendChild(div);
+  });
+  el.querySelectorAll('.qdel').forEach(b=>b.addEventListener('click',function(e){e.stopPropagation();delQuest(parseInt(this.dataset.del))}));
+  el.querySelectorAll('.qpbadge').forEach(b=>b.addEventListener('click',function(e){e.stopPropagation();togglePersist(parseInt(this.dataset.pid))}));
+}
+
+function togglePersist(id){
+  const q=S.quests.find(x=>x.id===id);if(!q)return;
+  q.persist=!q.persist;
+  sClk();persist();renderQuests();
+  showToast(q.persist?'🔁 QUEST SET TO DAILY':'1× SET TO ONE-TIME',false);
+}
+
+// ── render attrs ──
+function renderAttrs(){
+  const el=document.getElementById('al');el.innerHTML='';
+  Object.entries(ATTRS).forEach(([key,m])=>{
+    const val=S.attrs[key]||0,al=getAL(val);
+    const nxt=al.next?`${val}/${al.next.pts} → ${al.next.label}`:'MAX RANK';
+    const div=document.createElement('div');div.className='arow';
+    div.innerHTML=`
+      <div class="aico">${crestSVG(key,38)}</div>
+      <div class="ainf">
+        <div class="aname">${m.label}</div>
+        <div class="aval-r"><span class="anum" style="color:${m.color}">${val}</span><span class="alvl" style="color:${m.color}88">LV.${al.idx} ${al.label}</span></div>
+        <div class="abt"><div class="abf" style="width:${al.pct}%;background:${m.color};box-shadow:0 0 8px ${m.color}66"></div></div>
+        <div class="anxt">${nxt}</div>
+      </div>
+      <button class="atb" data-key="${key}">+</button>
+    `;
+    el.appendChild(div);
+  });
+  el.querySelectorAll('.atb').forEach(b=>b.addEventListener('click',()=>trainAttr(b.dataset.key)));
+}
+
+// ── render charts ──
+function renderCharts(){
+  // KD grid
+  const el=document.getElementById('kdg');if(!el)return;
+  const done=S.quests.filter(q=>q.done).length,tot=S.quests.length||1;
+  const ba=Object.entries(S.attrs).sort((a,b)=>b[1]-a[1])[0];
+  const cards=[
+    {v:S.level,l:'Hunter Level',c:'var(--blue)'},{v:S.streak+'d',l:'Streak',c:'var(--gold)'},
+    {v:Math.round(done/tot*100)+'%',l:'Quest Rate',c:'var(--green)'},
+    {v:S.totalQuestsDone,l:'Total Quests',c:'var(--purple)'},
+    {v:S.totalXp.toLocaleString(),l:'Total XP',c:'var(--blue)'},
+    {v:ba?ATTRS[ba[0]].icon+' '+ba[1]:'—',l:'Top Stat',c:ba?ATTRS[ba[0]].color:'var(--muted)'},
+  ];
+  el.innerHTML=cards.map((c,i)=>i===5&&ba?
+    `<div class="kdc"><div style="display:flex;align-items:center;justify-content:center;gap:5px"><span style="display:inline-flex">${crestSVG(ba[0],18)}</span><span class="kdv" style="color:${c.c}">${ba[1]}</span></div><div class="kdl">${c.l}</div></div>`
+    :`<div class="kdc"><div class="kdv" style="color:${c.c}">${c.v}</div><div class="kdl">${c.l}</div></div>`
+  ).join('');
+  drawRadar();drawBar();drawDonut();drawRankChart();
+}
+
+// ── Draw the Option E crest badge directly on a canvas (for radar/charts) ──
+const CREST_CANVAS_GLYPHS={
+  // each glyph is drawn in a normalized -1..1 box, then scaled by `s` (≈ radius*0.34)
+  strength:(ctx,cx,cy,s)=>{
+    ctx.lineWidth=Math.max(1,s*0.34);ctx.lineCap='round';ctx.lineJoin='round';
+    ctx.beginPath();
+    ctx.moveTo(cx-0.55*s,cy+0.85*s);ctx.lineTo(cx+0.55*s,cy-0.55*s);
+    ctx.moveTo(cx+0.18*s,cy-0.85*s);ctx.lineTo(cx+0.62*s,cy-0.85*s);ctx.lineTo(cx+0.62*s,cy-0.41*s);
+    ctx.stroke();
+  },
+  agility:(ctx,cx,cy,s)=>{
+    ctx.lineWidth=Math.max(1,s*0.3);ctx.lineCap='round';ctx.lineJoin='round';
+    ctx.beginPath();
+    ctx.moveTo(cx-0.8*s,cy-0.45*s);ctx.lineTo(cx+0.35*s,cy-0.45*s);
+    ctx.quadraticCurveTo(cx+0.8*s,cy-0.45*s,cx+0.8*s,cy-0.1*s);
+    ctx.quadraticCurveTo(cx+0.8*s,cy+0.25*s,cx+0.35*s,cy+0.25*s);
+    ctx.moveTo(cx-0.8*s,cy+0.45*s);ctx.lineTo(cx+0.45*s,cy+0.45*s);
+    ctx.stroke();
+  },
+  endurance:(ctx,cx,cy,s)=>{
+    ctx.lineWidth=Math.max(1,s*0.32);ctx.lineJoin='round';
+    ctx.beginPath();
+    ctx.moveTo(cx,cy-0.9*s);ctx.lineTo(cx+0.7*s,cy-0.55*s);ctx.lineTo(cx+0.7*s,cy+0.12*s);
+    ctx.quadraticCurveTo(cx+0.7*s,cy+0.72*s,cx,cy+0.95*s);
+    ctx.quadraticCurveTo(cx-0.7*s,cy+0.72*s,cx-0.7*s,cy+0.12*s);
+    ctx.lineTo(cx-0.7*s,cy-0.55*s);ctx.closePath();ctx.stroke();
+    ctx.lineWidth=Math.max(1,s*0.28);ctx.lineCap='round';
+    ctx.beginPath();ctx.moveTo(cx-0.32*s,cy);ctx.lineTo(cx-0.05*s,cy+0.3*s);ctx.lineTo(cx+0.4*s,cy-0.25*s);ctx.stroke();
+  },
+  intelligence:(ctx,cx,cy,s)=>{
+    ctx.lineWidth=Math.max(1,s*0.3);ctx.lineCap='round';ctx.lineJoin='round';
+    ctx.beginPath();
+    ctx.moveTo(cx,cy-0.8*s);
+    ctx.bezierCurveTo(cx+0.55*s,cy-0.8*s,cx+0.68*s,cy-0.28*s,cx+0.35*s,cy+0.05*s);
+    ctx.lineTo(cx+0.32*s,cy+0.45*s);ctx.lineTo(cx-0.32*s,cy+0.45*s);
+    ctx.lineTo(cx-0.35*s,cy+0.05*s);
+    ctx.bezierCurveTo(cx-0.68*s,cy-0.28*s,cx-0.55*s,cy-0.8*s,cx,cy-0.8*s);
+    ctx.closePath();ctx.stroke();
+    ctx.beginPath();ctx.moveTo(cx-0.26*s,cy+0.68*s);ctx.lineTo(cx+0.26*s,cy+0.68*s);ctx.stroke();
+  },
+  perception:(ctx,cx,cy,s)=>{
+    ctx.lineWidth=Math.max(1,s*0.3);ctx.lineJoin='round';
+    ctx.beginPath();
+    ctx.moveTo(cx-0.85*s,cy);ctx.quadraticCurveTo(cx,cy-0.65*s,cx+0.85*s,cy);
+    ctx.quadraticCurveTo(cx,cy+0.65*s,cx-0.85*s,cy);ctx.closePath();ctx.stroke();
+    ctx.beginPath();ctx.arc(cx,cy,0.3*s,0,Math.PI*2);ctx.fill();
+  },
+};
+
+function drawCrestOnCanvas(ctx,stat,cx,cy,radius){
+  const m=ATTRS[stat];if(!m)return;
+  const c=m.color,d=m.dark||'#0a0a14';
+  ctx.save();
+  // faceted hexagon frame (Option E) — flat-top orientation for clean glyph fit
+  const hexPts=[];
+  for(let i=0;i<6;i++){
+    const ang=Math.PI/180*(60*i-90);
+    hexPts.push([cx+radius*Math.cos(ang),cy+radius*Math.sin(ang)]);
+  }
+  ctx.beginPath();
+  hexPts.forEach((p,i)=>i===0?ctx.moveTo(p[0],p[1]):ctx.lineTo(p[0],p[1]));
+  ctx.closePath();
+  ctx.fillStyle=d;ctx.fill();
+  ctx.lineWidth=Math.max(1,radius*0.09);
+  ctx.strokeStyle=c;ctx.stroke();
+  // highlighted top-left edge for facet depth
+  ctx.beginPath();
+  ctx.moveTo(hexPts[0][0],hexPts[0][1]);
+  ctx.lineTo(hexPts[1][0],hexPts[1][1]);
+  ctx.lineTo(hexPts[2][0],hexPts[2][1]);
+  ctx.strokeStyle=c+'80';ctx.lineWidth=Math.max(1,radius*0.07);ctx.stroke();
+  // glyph — scaled to comfortably sit inside the hexagon's inner circle
+  ctx.strokeStyle=c;ctx.fillStyle=c;
+  const glyphScale=radius*0.62;
+  if(CREST_CANVAS_GLYPHS[stat])CREST_CANVAS_GLYPHS[stat](ctx,cx,cy,glyphScale);
+  ctx.restore();
+}
+
+function drawRadar(){
+  const cv=document.getElementById('rc');if(!cv)return;
+  // set explicit pixel size for HD rendering
+  const size=Math.min(340,window.innerWidth-64);
+  cv.width=size*2;cv.height=size*2; // 2x for retina/HD
+  cv.style.width=size+'px';cv.style.height=size+'px';
+  const ctx=cv.getContext('2d');
+  ctx.scale(2,2); // scale for HD
+  // extra bottom padding reserved for label text so nothing clips canvas edges
+  const W=size,H=size,cx=W/2,cy=H/2;
+  const R=Math.min(W,H)/2-62;
+  ctx.clearRect(0,0,W,H);
+  const keys=Object.keys(ATTRS),n=keys.length;
+  const maxVal=Math.max(10,...Object.values(S.attrs));
+
+  // identify the top attribute (highest value, ties broken by definition order)
+  let topKey=keys[0],topVal=-1;
+  keys.forEach(k=>{ const v=S.attrs[k]||0; if(v>topVal){topVal=v;topKey=k} });
+  const hasProgress=topVal>0;
+
+  // background fill
+  ctx.fillStyle='rgba(4,10,30,0.5)';ctx.beginPath();ctx.arc(cx,cy,R+20,0,Math.PI*2);ctx.fill();
+
+  // grid rings with labels
+  for(let ring=1;ring<=5;ring++){
+    const r=R*ring/5;
+    ctx.beginPath();
+    for(let i=0;i<n;i++){const a=Math.PI*2/n*i-Math.PI/2;i===0?ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a)):ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a))}
+    ctx.closePath();
+    ctx.strokeStyle=ring===5?'rgba(74,158,255,0.35)':'rgba(74,158,255,0.12)';
+    ctx.lineWidth=ring===5?1.2:.7;ctx.stroke();
+    // ring value label
+    const ringVal=Math.round(maxVal*ring/5);
+    ctx.fillStyle='rgba(74,158,255,0.45)';ctx.font='9px Share Tech Mono,monospace';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(ringVal,cx+4,cy-r+6);
+  }
+
+  // axes
+  for(let i=0;i<n;i++){
+    const a=Math.PI*2/n*i-Math.PI/2;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+R*Math.cos(a),cy+R*Math.sin(a));
+    ctx.strokeStyle='rgba(74,158,255,0.25)';ctx.lineWidth=.8;ctx.stroke();
+  }
+
+  // axis labels — crest badge + label, evenly spaced and clamped within canvas
+  const badgeR=12;
+  const labelDist=R+badgeR+14; // distance from center to badge center
+  keys.forEach((k,i)=>{
+    const a=Math.PI*2/n*i-Math.PI/2;
+    let bx=cx+labelDist*Math.cos(a);
+    let by=cy+labelDist*Math.sin(a);
+    // clamp so badge + label text never clip outside the canvas
+    const margin=badgeR+14;
+    bx=Math.max(margin,Math.min(W-margin,bx));
+    by=Math.max(margin,Math.min(H-margin,by));
+    const m=ATTRS[k];
+    const isTop=hasProgress&&k===topKey;
+
+    // glowing highlight ring behind the top attribute's badge
+    if(isTop){
+      const pulse=0.55+0.35*Math.sin(Date.now()/350);
+      ctx.beginPath();ctx.arc(bx,by,badgeR+7,0,Math.PI*2);
+      ctx.fillStyle=m.color+'26';ctx.fill();
+      ctx.beginPath();ctx.arc(bx,by,badgeR+3.5,0,Math.PI*2);
+      ctx.strokeStyle=m.color;ctx.lineWidth=1.4;ctx.globalAlpha=pulse;ctx.stroke();ctx.globalAlpha=1;
+      ctx.shadowColor=m.color;ctx.shadowBlur=14*pulse;
+    }
+
+    drawCrestOnCanvas(ctx,k,bx,by,badgeR);
+    ctx.shadowBlur=0;
+
+    ctx.fillStyle=isTop?m.color:m.color+'cc';
+    ctx.font=isTop?'bold 9.5px Rajdhani,sans-serif':'bold 9px Rajdhani,sans-serif';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(m.label,bx,by+badgeR+11);
+  });
+
+  // data fill
+  ctx.beginPath();
+  keys.forEach((k,i)=>{
+    const a=Math.PI*2/n*i-Math.PI/2;
+    const v=Math.min(1,(S.attrs[k]||0)/maxVal);
+    const r=R*v+2;
+    i===0?ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a)):ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));
+  });
+  ctx.closePath();
+  const grad=ctx.createRadialGradient(cx,cy,0,cx,cy,R);
+  grad.addColorStop(0,'rgba(139,92,246,0.45)');
+  grad.addColorStop(.5,'rgba(74,158,255,0.3)');
+  grad.addColorStop(1,'rgba(74,158,255,0.08)');
+  ctx.fillStyle=grad;ctx.fill();
+  ctx.strokeStyle='rgba(74,158,255,0.85)';ctx.lineWidth=2;ctx.shadowColor='#4a9eff';ctx.shadowBlur=8;ctx.stroke();
+  ctx.shadowBlur=0;
+
+  // data points with glow — top attribute gets a stronger pulse
+  keys.forEach((k,i)=>{
+    const a=Math.PI*2/n*i-Math.PI/2;
+    const v=Math.min(1,(S.attrs[k]||0)/maxVal);
+    const r=R*v+2;
+    const px=cx+r*Math.cos(a),py=cy+r*Math.sin(a);
+    const isTop=hasProgress&&k===topKey;
+    const pulse=isTop?(0.6+0.4*Math.sin(Date.now()/350)):1;
+    ctx.shadowColor=ATTRS[k].color;ctx.shadowBlur=isTop?16*pulse:10;
+    ctx.beginPath();ctx.arc(px,py,isTop?6.5:5,0,Math.PI*2);
+    ctx.fillStyle=ATTRS[k].color;ctx.fill();
+    ctx.shadowBlur=0;
+    ctx.beginPath();ctx.arc(px,py,2.5,0,Math.PI*2);
+    ctx.fillStyle='#fff';ctx.fill();
+    // value label near point
+    ctx.fillStyle=ATTRS[k].color;ctx.font='bold 10px Share Tech Mono,monospace';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    const off=14;ctx.fillText(S.attrs[k]||0,px+off*Math.cos(a),py+off*Math.sin(a));
+  });
+
+  // keep the glow animating smoothly while the chart tab is open
+  if(document.getElementById('panel-charts')&&document.getElementById('panel-charts').classList.contains('active')){
+    cancelAnimationFrame(window._radarRAF);
+    window._radarRAF=requestAnimationFrame(()=>{ if(document.getElementById('panel-charts').classList.contains('active')) drawRadar(); });
+  }
+}
+
+function drawBar(){
+  const cv=document.getElementById('bc');if(!cv)return;
+  cv.width=(cv.offsetWidth||340)*2;cv.height=300;
+  cv.style.height='150px';
+  const ctx=cv.getContext('2d');ctx.scale(2,2);
+  const W=cv.offsetWidth||340,H=150;
+  ctx.clearRect(0,0,W,H);
+  const days=[];
+  for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);const k=d.toISOString().slice(0,10);days.push({k,l:['Su','Mo','Tu','We','Th','Fr','Sa'][d.getDay()],xp:(S.dailyXp&&S.dailyXp[k])||0})}
+  const mx=Math.max(10,...days.map(d=>d.xp));
+  const pL=14,pR=14,pT=14,pB=30,bw=(W-pL-pR)/7;
+  // grid
+  for(let g=0;g<=4;g++){const y=pT+(H-pT-pB)*g/4;ctx.beginPath();ctx.moveTo(pL,y);ctx.lineTo(W-pR,y);ctx.strokeStyle='rgba(74,158,255,0.08)';ctx.lineWidth=1;ctx.stroke();
+  ctx.fillStyle='rgba(74,158,255,0.3)';ctx.font='8px Share Tech Mono,monospace';ctx.textAlign='right';ctx.fillText(Math.round(mx*(1-g/4)),pL-3,y+3);}
+  // bars
+  days.forEach((d,i)=>{
+    const bh=Math.max(2,(d.xp/mx)*(H-pT-pB));
+    const x=pL+i*bw+bw*.15,y=H-pB-bh,w=bw*.7;
+    const g=ctx.createLinearGradient(0,y,0,H-pB);
+    g.addColorStop(0,'rgba(74,158,255,0.9)');g.addColorStop(1,'rgba(139,92,246,0.55)');
+    ctx.fillStyle=g;ctx.shadowColor='rgba(74,158,255,0.5)';ctx.shadowBlur=6;
+    ctx.beginPath();ctx.roundRect(x,y,w,bh,3);ctx.fill();ctx.shadowBlur=0;
+    ctx.fillStyle='rgba(120,168,240,0.75)';ctx.font='9px Rajdhani,sans-serif';ctx.textAlign='center';ctx.fillText(d.l,x+w/2,H-pB+14);
+    if(d.xp>0){ctx.fillStyle='rgba(74,158,255,0.9)';ctx.font='bold 9px Share Tech Mono,monospace';ctx.fillText(d.xp,x+w/2,y-5)}
+  });
+}
+
+function drawDonut(){
+  const cv=document.getElementById('dc');if(!cv)return;
+  cv.width=440;cv.height=440;cv.style.width='220px';cv.style.height='220px';
+  const ctx=cv.getContext('2d');ctx.scale(2,2);
+  const W=220,H=220,cx=W/2,cy=H/2,R=82,r=52;
+  ctx.clearRect(0,0,W,H);
+  const done=S.quests.filter(q=>q.done).length,tot=S.quests.length;
+  const slices=[{v:done,c:'rgba(74,158,255,0.88)'},{v:Math.max(0,tot-done),c:'rgba(20,35,75,0.85)'}];
+  let start=-Math.PI/2;
+  slices.forEach(s=>{if(!s.v)return;const sw=Math.PI*2*(s.v/Math.max(tot,1));ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,R,start,start+sw);ctx.closePath();ctx.fillStyle=s.c;ctx.fill();start+=sw});
+  // inner ring glow
+  ctx.shadowColor='rgba(74,158,255,0.4)';ctx.shadowBlur=12;
+  ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.strokeStyle='rgba(74,158,255,0.35)';ctx.lineWidth=2;ctx.stroke();ctx.shadowBlur=0;
+  // hole
+  ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fillStyle='rgba(3,8,25,0.97)';ctx.fill();
+  // inner text
+  ctx.fillStyle='rgba(74,158,255,0.95)';ctx.font='bold 28px Share Tech Mono,monospace';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.shadowColor='rgba(74,158,255,0.5)';ctx.shadowBlur=10;
+  ctx.fillText(tot?Math.round(done/tot*100)+'%':'0%',cx,cy-8);ctx.shadowBlur=0;
+  ctx.fillStyle='rgba(120,160,220,0.65)';ctx.font='10px Rajdhani,sans-serif';ctx.fillText(done+'/'+tot+' QUESTS',cx,cy+14);
+}
+
+function drawRankChart(){
+  const cv=document.getElementById('rpc');if(!cv)return;
+  const DPR=2;
+  const W=cv.offsetWidth||340,H=240;
+  cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
+  cv.style.width=W+'px';cv.style.height=H+'px';
+  const ctx=cv.getContext('2d');ctx.setTransform(DPR,0,0,DPR,0,0);
+  ctx.clearRect(0,0,W,H);
+
+  // ── Rank definitions — precise level thresholds, evenly spaced bands ──
+  const RANK_LIST=[
+    {letter:'E',minLv:1,  color:'#64748b'},
+    {letter:'D',minLv:5,  color:'#22c55e'},
+    {letter:'C',minLv:10, color:'#4a9eff'},
+    {letter:'B',minLv:20, color:'#8b5cf6'},
+    {letter:'A',minLv:35, color:'#f97316'},
+    {letter:'S',minLv:50, color:'#f0c040'},
+    {letter:'N',minLv:75, color:'#ef4444'},
+    {letter:'M',minLv:100,color:'#ff6eb4'},
+  ];
+  const nR=RANK_LIST.length;
+  const CAP_LV=110; // chart ceiling beyond Monarch
+
+  // Each rank band occupies an EQUAL vertical slice regardless of how many
+  // levels it spans — this is what makes the chart precise and stable:
+  // reaching a rank always lands the line exactly on that rank's gridline,
+  // and progress *within* a rank is shown as a smooth fraction inside its band.
+  function levelToY(lv){
+    lv=Math.max(1,Math.min(lv,CAP_LV));
+    // find which band this level falls in
+    let bandIdx=0;
+    for(let i=0;i<nR;i++){ if(lv>=RANK_LIST[i].minLv) bandIdx=i; }
+    const bandStart=RANK_LIST[bandIdx].minLv;
+    const bandEnd=(bandIdx<nR-1)?RANK_LIST[bandIdx+1].minLv:CAP_LV;
+    const bandSpan=Math.max(1,bandEnd-bandStart);
+    const withinFrac=Math.min(1,(lv-bandStart)/bandSpan);
+    // overall fraction = band's own equal-slice position + progress within slice
+    const overallFrac=(bandIdx+withinFrac)/nR;
+    return pT+cH*(1-overallFrac);
+  }
+  function rankBandY(idx){ return pT+cH*(1-idx/nR); }
+
+  const pL=40,pR=16,pT=18,pB=36;
+  const cW=W-pL-pR,cH=H-pT-pB;
+
+  // ── background equal-height rank bands ──
+  RANK_LIST.forEach((r,i)=>{
+    const yTop=rankBandY(i+1);
+    const yBot=rankBandY(i);
+    ctx.fillStyle=`${r.color}09`;
+    ctx.fillRect(pL,yTop,cW,yBot-yTop);
+    // solid boundary line at the BOTTOM of each band (= exact level threshold)
+    ctx.beginPath();ctx.moveTo(pL,yBot);ctx.lineTo(W-pR,yBot);
+    ctx.strokeStyle=`${r.color}38`;ctx.lineWidth=1;
+    ctx.setLineDash(i===0?[]:[4,4]);ctx.stroke();ctx.setLineDash([]);
+    // rank letter label, vertically centered in its band
+    const labelY=(yTop+yBot)/2;
+    ctx.fillStyle=r.color;ctx.font='bold 12px Rajdhani,sans-serif';
+    ctx.textAlign='right';ctx.textBaseline='middle';
+    ctx.shadowColor=r.color;ctx.shadowBlur=4;
+    ctx.fillText(r.letter,pL-8,labelY);
+    ctx.shadowBlur=0;
+    // small min-level tick under the letter
+    ctx.fillStyle=`${r.color}88`;ctx.font='8px Share Tech Mono,monospace';
+    ctx.fillText('Lv'+r.minLv,pL-8,labelY+11);
+  });
+  // top cap line
+  ctx.beginPath();ctx.moveTo(pL,pT);ctx.lineTo(W-pR,pT);
+  ctx.strokeStyle='rgba(255,255,255,0.08)';ctx.lineWidth=1;ctx.stroke();
+
+  // ── Build precise data points from the progress log ──
+  // S.progressLog is an append-only array of {ts, level, totalXp} written at
+  // every XP-earning moment — this is ground truth, not a re-simulation.
+  let log=(S.progressLog||[]).slice();
+  if(!log.length) log=[{ts:Date.now(),level:S.level,totalXp:S.totalXp}];
+  // always ensure the very last point matches the player's live current state
+  const lastLog=log[log.length-1];
+  if(lastLog.level!==S.level||lastLog.totalXp!==S.totalXp){
+    log.push({ts:Date.now(),level:S.level,totalXp:S.totalXp});
+  }
+  // collapse to at most ~60 evenly-sampled points for a clean line while
+  // always keeping the first and last (most recent) points exact
+  let pointsData=log;
+  if(pointsData.length>60){
+    const step=(pointsData.length-1)/59;
+    const sampled=[];
+    for(let i=0;i<60;i++) sampled.push(pointsData[Math.round(i*step)]);
+    sampled[sampled.length-1]=pointsData[pointsData.length-1];
+    pointsData=sampled;
+  }
+
+  const n=pointsData.length;
+  const pts=pointsData.map((d,i)=>({
+    x: pL+cW*(n<=1?1:i/(n-1)),
+    y: levelToY(d.level),
+    level:d.level,
+    ts:d.ts
+  }));
+
+  // ── X axis date labels: first, middle, last (real dates, not guesses) ──
+  function fmtDate(ts){
+    const d=new Date(ts);
+    return d.toLocaleDateString('en-IN',{day:'2-digit',month:'short'});
+  }
+  const xIdxs = n<=2 ? [0,n-1] : [0,Math.floor((n-1)/2),n-1];
+  xIdxs.forEach(i=>{
+    if(i<0||i>=pts.length)return;
+    const p=pts[i];
+    ctx.beginPath();ctx.moveTo(p.x,pT);ctx.lineTo(p.x,pT+cH);
+    ctx.strokeStyle='rgba(74,158,255,0.06)';ctx.lineWidth=1;ctx.stroke();
+    ctx.fillStyle='rgba(120,160,220,0.55)';ctx.font='9px Share Tech Mono,monospace';
+    ctx.textAlign='center';ctx.textBaseline='top';
+    ctx.fillText(fmtDate(p.ts),p.x,pT+cH+6);
+  });
+
+  // ── Empty / single-point state ──
+  if(pts.length<2){
+    ctx.fillStyle='rgba(74,158,255,0.35)';ctx.font='12px Rajdhani,sans-serif';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText('Complete quests to build your rank history',W/2,H/2);
+    const p=pts[0]||{x:pL,y:pT+cH};
+    ctx.beginPath();ctx.arc(p.x,p.y,6,0,Math.PI*2);
+    ctx.fillStyle='rgba(74,158,255,0.7)';ctx.fill();
+    return;
+  }
+
+  // ── Filled area under the curve ──
+  ctx.beginPath();
+  ctx.moveTo(pts[0].x,pT+cH);
+  pts.forEach(p=>ctx.lineTo(p.x,p.y));
+  ctx.lineTo(pts[pts.length-1].x,pT+cH);
+  ctx.closePath();
+  const fillG=ctx.createLinearGradient(0,pT,0,pT+cH);
+  fillG.addColorStop(0,'rgba(74,158,255,0.26)');
+  fillG.addColorStop(0.5,'rgba(139,92,246,0.16)');
+  fillG.addColorStop(1,'rgba(74,158,255,0.02)');
+  ctx.fillStyle=fillG;ctx.fill();
+
+  // ── Smooth progress line, colored by CURRENT rank (single consistent color) ──
+  const curRank=getRank(S.level);
+  ctx.beginPath();
+  pts.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
+  ctx.strokeStyle=curRank.color;ctx.lineWidth=2.4;
+  ctx.shadowColor=curRank.color;ctx.shadowBlur=7;ctx.stroke();ctx.shadowBlur=0;
+
+  // ── Precise rank-up markers — exactly where the line crosses a band boundary ──
+  pts.forEach((p,i)=>{
+    if(i===0)return;
+    const prevRank=getRank(pts[i-1].level);
+    const thisRank=getRank(p.level);
+    if(thisRank.letter!==prevRank.letter){
+      ctx.beginPath();ctx.arc(p.x,p.y,5,0,Math.PI*2);
+      ctx.fillStyle=thisRank.color;ctx.shadowColor=thisRank.color;ctx.shadowBlur=10;ctx.fill();ctx.shadowBlur=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,2,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();
+      ctx.fillStyle=thisRank.color;ctx.font='bold 9px Share Tech Mono,monospace';
+      ctx.textAlign='center';ctx.textBaseline='bottom';
+      ctx.fillText('↑'+thisRank.letter,p.x,p.y-7);
+    }
+  });
+
+  // ── Current position — precisely snapped to the player's exact level/rank ──
+  const last=pts[pts.length-1];
+  const lRank=getRank(S.level);
+  // re-derive y directly from S.level (not the sampled point) so it's always
+  // pixel-exact even if the log was downsampled
+  const curY=levelToY(S.level);
+  const curX=last.x;
+
+  ctx.beginPath();ctx.arc(curX,curY,13,0,Math.PI*2);
+  ctx.fillStyle=`${lRank.color}18`;ctx.fill();
+  ctx.beginPath();ctx.arc(curX,curY,8,0,Math.PI*2);
+  ctx.fillStyle=`${lRank.color}30`;ctx.fill();
+  ctx.beginPath();ctx.arc(curX,curY,5.5,0,Math.PI*2);
+  ctx.fillStyle=lRank.color;ctx.shadowColor=lRank.color;ctx.shadowBlur=14;ctx.fill();ctx.shadowBlur=0;
+  ctx.beginPath();ctx.arc(curX,curY,2.2,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();
+
+  ctx.beginPath();ctx.moveTo(curX,curY+6);ctx.lineTo(curX,pT+cH);
+  ctx.strokeStyle=`${lRank.color}50`;ctx.lineWidth=1.2;ctx.setLineDash([3,3]);ctx.stroke();ctx.setLineDash([]);
+
+  const lblY=curY-18;
+  ctx.fillStyle=lRank.color;ctx.font='bold 10px Share Tech Mono,monospace';
+  ctx.textAlign='center';ctx.textBaseline='bottom';
+  ctx.shadowColor=lRank.color;ctx.shadowBlur=6;
+  ctx.fillText('LV.'+S.level+' '+lRank.letter+'-RANK',curX,lblY);
+  ctx.shadowBlur=0;
+
+  // axis captions
+  ctx.fillStyle='rgba(120,160,220,0.45)';ctx.font='9px Rajdhani,sans-serif';
+  ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText('Rank',3,pT+cH/2);
+  ctx.textAlign='center';ctx.fillText('Progress over time',pL+cW/2,pT+cH+25);
+}
+
+// ── render history ──
+function renderHistory(){
+  const el=document.getElementById('hlist');el.innerHTML='';
+  if(!S.history||!S.history.length){el.innerHTML='<div class="hempty">NO ACTIVITY YET</div>';return}
+  [...S.history].reverse().slice(0,60).forEach(h=>{
+    const d=document.createElement('div');d.className='hitem';
+    d.innerHTML=`<div class="hdate">${h.date}</div><div class="htext">${esc(h.text)}</div><div class="hxp">+${h.xp} XP</div>`;
+    el.appendChild(d);
+  });
+}
+
+// ════ HABIT MECHANICS ════
+
+function renderWCCard(mini=false){
+  const wc=getCurrentWC();
+  const wcs=S.weeklyChallenge;
+  const prog=Math.min(wc.target,wcs.progress||0);
+  const pct=Math.round(prog/wc.target*100);
+  const daysLeft=getDaysLeftInWeek();
+  const done=wcs.claimed;
+  return `
+    <div class="wc-card" style="margin-bottom:${mini?'.9rem':'0'}">
+      <div class="wc-header">
+        <span class="wc-icon">${wc.icon}</span>
+        <span class="wc-title">WEEKLY CHALLENGE</span>
+        <span class="wc-badge">${done?'✓ DONE':daysLeft+'d LEFT'}</span>
+      </div>
+      <div class="wc-name">${wc.name}</div>
+      <div class="wc-desc">${wc.desc}</div>
+      <div class="wc-prog-row">
+        <span class="wc-prog-lbl">PROGRESS</span>
+        <span class="wc-prog-val">${prog} / ${wc.target}</span>
+      </div>
+      <div class="wc-bar"><div class="wc-bar-f" style="width:${pct}%"></div></div>
+      <div class="wc-reward">🏆 REWARD: +${wc.reward} XP on completion</div>
+      ${done?`<div class="wc-done"><div class="wc-done-icon">🏆</div><div class="wc-done-txt">CHALLENGE COMPLETE</div></div>`:''}
+    </div>`;
+}
+
+function renderHabits(){
+  // weekly challenge full card
+  const wh=document.getElementById('wc-habits-wrap');
+  if(wh)wh.innerHTML=renderWCCard(false);
+
+  // streak shield
+  if(!S.shield)S.shield={charges:1,maxCharges:3,lastChargeWeek:null,usedThisWeek:false};
+  const pips=document.getElementById('shield-pips');
+  if(pips){
+    pips.innerHTML='';
+    for(let i=0;i<S.shield.maxCharges;i++){
+      const p=document.createElement('div');
+      p.className='shield-pip'+(i<S.shield.charges?' active':'');
+      pips.appendChild(p);
+    }
+  }
+  const shBtn=document.getElementById('shield-btn');
+  if(shBtn){shBtn.disabled=S.shield.charges===0||S.shield.usedThisWeek}
+  const shDesc=document.getElementById('shield-desc');
+  if(shDesc)shDesc.textContent=S.shield.charges>0
+    ?`${S.shield.charges} charge${S.shield.charges>1?'s':''} available. Recharges +1 each week (max ${S.shield.maxCharges}).`
+    :'No charges left. Recharges +1 next week.';
+
+  // scaling table
+  const st=document.getElementById('scaling-table');
+  if(st){
+    const tiers=[
+      {lv:'Lv 1–9',  mult:'×1.0', col:'#64748b'},
+      {lv:'Lv 10–19',mult:'×1.2', col:'#4a9eff'},
+      {lv:'Lv 20–34',mult:'×1.4', col:'#8b5cf6'},
+      {lv:'Lv 35–49',mult:'×1.7', col:'#f97316'},
+      {lv:'Lv 50+',  mult:'×2.0', col:'#f0c040'},
+    ];
+    st.innerHTML=tiers.map(t=>`
+      <div style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:4px;background:rgba(74,158,255,0.04);border:1px solid rgba(74,158,255,0.08)">
+        <span style="font-family:var(--Mo);font-size:11px;color:${t.col};min-width:70px">${t.lv}</span>
+        <span style="font-size:18px;font-weight:700;color:${t.col};font-family:var(--Mo)">${t.mult}</span>
+        <span style="font-size:11px;color:var(--muted)">XP multiplier</span>
+        ${S.level>=(parseInt(t.lv.replace('Lv ','').split('–')[0].replace('+','')))?'<span style="margin-left:auto;font-size:9px;font-family:var(--Mo);color:'+t.col+';background:'+t.col+'18;border:1px solid '+t.col+'44;padding:2px 6px;border-radius:2px">ACTIVE</span>':''}
+      </div>`).join('');
+  }
+}
+
+function useShield(){
+  if(!S.shield)return;
+  if(S.shield.charges<=0||S.shield.usedThisWeek){showToast('🛡 NO SHIELD CHARGES',false);return}
+  S.shield.charges--;S.shield.usedThisWeek=true;
+  if(S.streak===0)S.streak=1;
+  persist();renderHabits();
+  showToast('🛡 STREAK SHIELD USED — streak protected!',false);
+  render();
+}
+
+// ════ ACHIEVEMENTS & TITLES ════
+function checkAchievements(){
+  if(!S.unlockedAchs)S.unlockedAchs=[];
+  const newOnes=[];
+  ACHIEVEMENTS.forEach(a=>{
+    if(!S.unlockedAchs.includes(a.id)&&a.check(S)){
+      S.unlockedAchs.push(a.id);
+      newOnes.push(a);
+    }
+  });
+  if(newOnes.length){
+    persist();
+    // award XP for each new achievement
+    newOnes.forEach((a,i)=>{
+      setTimeout(()=>{
+        S.xp+=a.xp;S.totalXp+=a.xp;
+        let leveled=false;while(S.xp>=xpN(S.level)){S.xp-=xpN(S.level);S.level++;leveled=true}
+        persist();logProgress();persist();
+        showAchPopup(a);
+        if(leveled)setTimeout(()=>{sLU();showLvlUp(S.level,getRank(S.level).label.toUpperCase())},600);
+      },i*1800);
+    });
+  }
+  // auto-unlock titles
+  TITLES.forEach(t=>{
+    if(!t.unlockFn)return;
+    const unlocked=t.unlockFn(S);
+    // titles don't need separate tracking, they're computed on render
+  });
+}
+
+function showAchPopup(a){
+  const el=document.getElementById('ach-popup');
+  document.getElementById('ap-icon').textContent=a.icon;
+  document.getElementById('ap-name').textContent=a.name;
+  document.getElementById('ap-xp').textContent='+'+a.xp+' XP REWARDED';
+  el.classList.add('show');
+  tone(800,'sine',.1,.2);tone(1000,'sine',.1,.2,.1);tone(1200,'sine',.15,.2,.2);
+  setTimeout(()=>el.classList.remove('show'),3500);
+}
+
+function renderRewards(){
+  // achievements grid
+  const ag=document.getElementById('ach-grid');
+  if(!ag)return;
+  if(!S.unlockedAchs)S.unlockedAchs=[];
+  ag.innerHTML='';
+  ACHIEVEMENTS.forEach(a=>{
+    const unlocked=S.unlockedAchs.includes(a.id);
+    const div=document.createElement('div');
+    div.className='ach-card'+(unlocked?' unlocked':' locked');
+    div.style.setProperty('--ac',a.color);
+    div.innerHTML=`
+      ${unlocked?'<div class="ach-unlocked-badge">✓</div>':''}
+      <div class="ach-icon">${unlocked?a.icon:'🔒'}</div>
+      <div class="ach-name">${unlocked?a.name:'???'}</div>
+      <div class="ach-desc">${a.desc}</div>
+      ${unlocked?`<div class="ach-reward">+${a.xp} XP</div>`:''}
+    `;
+    ag.appendChild(div);
+  });
+
+  // titles list
+  const tl=document.getElementById('title-list');
+  if(!tl)return;
+  tl.innerHTML='';
+  TITLES.forEach(t=>{
+    const unlocked=t.unlockFn?t.unlockFn(S):false;
+    const equipped=S.equippedTitle===t.id;
+    const div=document.createElement('div');
+    div.className='title-row'+(equipped?' equipped':'')+(unlocked?'':' locked');
+    div.innerHTML=`
+      <div class="title-icon">${t.icon}</div>
+      <div class="title-info">
+        <div class="title-name">${t.name}</div>
+        <div class="title-cond">${t.cond}</div>
+      </div>
+      <span class="title-equip-badge ${equipped?'on':unlocked?'off':'locked'}">${equipped?'EQUIPPED':unlocked?'EQUIP':'LOCKED'}</span>
+    `;
+    if(unlocked&&!equipped)div.onclick=()=>equipTitle(t.id);
+    tl.appendChild(div);
+  });
+}
+
+function equipTitle(id){
+  sClk();
+  S.equippedTitle=id;
+  persist();
+  render();
+  const t=TITLES.find(x=>x.id===id);
+  if(t)showToast(t.icon+' "'+t.name+'" EQUIPPED',false);
+}
+
+// ── Profile Card ──
+// helper: mix a hex color with transparent at given alpha (0-1), returns rgba string
+function hexAlpha(hex,alpha){
+  hex=hex.replace('#','');
+  if(hex.length===3)hex=hex.split('').map(c=>c+c).join('');
+  const r=parseInt(hex.slice(0,2),16),g=parseInt(hex.slice(2,4),16),b=parseInt(hex.slice(4,6),16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+function openProfile(){
+  sClk();
+  const eqT=TITLES.find(t=>t.id===S.equippedTitle);
+  const rank=getRank(S.level);
+  document.getElementById('pc-name').textContent=S.name;
+  document.getElementById('pc-title').textContent=eqT?eqT.icon+' '+eqT.name:'';
+  document.getElementById('pc-lv').textContent=S.level;
+  document.getElementById('pc-lv').style.color=rank.color;
+  document.getElementById('pc-rank').textContent=rank.letter;
+  document.getElementById('pc-rank').style.color=rank.color;
+  document.getElementById('pc-streak').textContent=S.streak;
+  document.getElementById('pc-txp').textContent=S.totalXp.toLocaleString();
+  document.getElementById('pc-qd').textContent=S.totalQuestsDone;
+  document.getElementById('pc-ach').textContent=(S.unlockedAchs||[]).length;
+
+  // ── top attribute (for background bleed color) ──
+  const attrEntries=Object.entries(S.attrs||{});
+  const topAttr=attrEntries.length?attrEntries.sort((a,b)=>b[1]-a[1])[0]:null;
+  const attrColor=topAttr&&topAttr[1]>0?ATTRS[topAttr[0]].color:rank.color;
+
+  // ── apply dynamic rank-glow border + attribute-bleed background via inline vars ──
+  const card=document.getElementById('profile-card');
+  card.style.setProperty('--rankc',rank.color);
+  card.style.setProperty('--attrc',attrColor);
+  card.style.borderColor=rank.color;
+  card.style.boxShadow=`0 0 70px ${hexAlpha(rank.color,0.38)}, 0 0 140px ${hexAlpha(rank.color,0.16)}`;
+  // manual gradient fallback (in case color-mix() isn't supported by the renderer)
+  const beforeBg=
+    `radial-gradient(ellipse 85% 50% at 50% -8%, ${hexAlpha(rank.color,0.4)} 0%, transparent 62%),`+
+    `radial-gradient(ellipse 70% 55% at 85% 105%, ${hexAlpha(attrColor,0.32)} 0%, transparent 60%),`+
+    `radial-gradient(ellipse 60% 45% at 8% 100%, ${hexAlpha(attrColor,0.18)} 0%, transparent 55%)`;
+  card.style.setProperty('--pc-before-bg',beforeBg);
+  let styleTag=document.getElementById('pc-dynamic-style');
+  if(!styleTag){styleTag=document.createElement('style');styleTag.id='pc-dynamic-style';document.head.appendChild(styleTag)}
+  styleTag.textContent=`#profile-card::before{background:${beforeBg} !important;}`;
+
+  // attr bars (now with numeric values)
+  const maxAttr=Math.max(1,...Object.values(S.attrs));
+  const pa=document.getElementById('pc-attrs');
+  pa.innerHTML='';
+  Object.entries(ATTRS).forEach(([k,m])=>{
+    const val=S.attrs[k]||0;
+    const pct=Math.round(val/Math.max(maxAttr,1)*100);
+    pa.innerHTML+=`
+      <div class="pc-attr">
+        <div class="pc-attr-bar">
+          <div class="pc-attr-fill" style="height:${pct}%;background:${m.color};box-shadow:0 0 8px ${m.color}66"></div>
+        </div>
+        <div class="pc-attr-lbl" style="display:flex;justify-content:center">${crestSVG(k,16)}</div>
+        <div class="pc-attr-val">${val}</div>
+      </div>`;
+  });
+
+  // unlocked achievement icons
+  const pac=document.getElementById('pc-achs');
+  pac.innerHTML='';
+  (S.unlockedAchs||[]).slice(0,10).forEach(id=>{
+    const a=ACHIEVEMENTS.find(x=>x.id===id);
+    if(a)pac.innerHTML+=`<div class="pc-ach-chip" title="${a.name}">${a.icon}</div>`;
+  });
+
+  // ── footer: Day counter since first ever played ──
+  if(!S.joinedAt)S.joinedAt=Date.now();
+  const dayNum=Math.max(1,Math.floor((Date.now()-S.joinedAt)/86400000)+1);
+  document.getElementById('pc-day').textContent='DAY '+dayNum;
+
+  document.getElementById('profile-overlay').classList.add('show');
+}
+
+function closeProfile(){document.getElementById('profile-overlay').classList.remove('show')}
+
+function saveProfileCard(){
+  // Use html2canvas-like approach via DOM serialization to canvas
+  const card=document.getElementById('profile-card');
+  showToast('📸 SCREENSHOT YOUR SCREEN TO SAVE!',false);
+  // For a real save without html2canvas, guide the user
+  card.style.outline='2px solid rgba(74,158,255,0.6)';
+  setTimeout(()=>card.style.outline='',2000);
+}
+
+// ════ QUEST ACTIONS ════
+function scaledXP(base){
+  const lv=S.level;
+  if(lv>=50)return Math.round(base*2.0);
+  if(lv>=35)return Math.round(base*1.7);
+  if(lv>=20)return Math.round(base*1.4);
+  if(lv>=10)return Math.round(base*1.2);
+  return base;
+}
+
+function completeQuest(id){
+  const q=S.quests.find(x=>x.id===id);if(!q||q.done)return;
+  q.done=true;
+  const earnedXP=scaledXP(q.xp);
+  S.xp+=earnedXP;S.totalXp+=earnedXP;S.totalQuestsDone++;
+  S.attrs[q.stat]=(S.attrs[q.stat]||0)+Math.max(1,Math.floor(earnedXP/10));
+  const ds=new Date().toLocaleDateString('en-IN',{day:'2-digit',month:'short'});
+  const dk=todayKey();if(!S.dailyXp)S.dailyXp={};S.dailyXp[dk]=(S.dailyXp[dk]||0)+earnedXP;
+  // advance level BEFORE logging history so we can snapshot the resulting level precisely
+  let leveled=false;while(S.xp>=xpN(S.level)){S.xp-=xpN(S.level);S.level++;leveled=true}
+  if(!S.history)S.history=[];
+  S.history.push({date:ds,text:q.name,xp:earnedXP,ts:Date.now(),lvl:S.level,totalXp:S.totalXp});
+  if(S.history.length>500)S.history=S.history.slice(-500);
+  if(!S.lastDate||S.lastDate!==new Date().toDateString())S.lastDate=new Date().toDateString();
+  updateWCProgress(true,q.cat||'body',earnedXP);
+  // check if all daily quests done
+  const allDone=S.quests.filter(q2=>q2.persist).every(q2=>q2.done);
+  if(allDone){S._perfectDay=true;}
+  persist();sQC();
+  logProgress();
+  checkAchievements();
+  if(leveled){render();setTimeout(()=>{sLU();showLvlUp(S.level,getRank(S.level).label.toUpperCase())},400)}
+  else{showToast('QUEST COMPLETE  +'+earnedXP+' XP',false);render()}
+}
+
+function delQuest(id){
+  if(!confirm('Remove this quest?'))return;
+  sDel();S.quests=S.quests.filter(x=>x.id!==id);persist();renderQuests();showToast('QUEST REMOVED',false);
+}
+
+function trainAttr(key){
+  sTr();S.attrs[key]=(S.attrs[key]||0)+1;S.xp+=5;S.totalXp+=5;
+  const dk=todayKey();if(!S.dailyXp)S.dailyXp={};S.dailyXp[dk]=(S.dailyXp[dk]||0)+5;
+  let leveled=false;while(S.xp>=xpN(S.level)){S.xp-=xpN(S.level);S.level++;leveled=true}
+  persist();checkAchievements();logProgress();persist();
+  if(leveled){render();setTimeout(()=>{sLU();showLvlUp(S.level,getRank(S.level).label.toUpperCase())},200)}
+  else{showToast(ATTRS[key].label.toUpperCase()+' +1  (+5 XP)',false);render()}
+}
+
+// ── FORM ──
+function openForm(){sClk();document.getElementById('af').classList.add('open');document.getElementById('ofb').style.display='none';document.getElementById('qn').focus()}
+function closeForm(){document.getElementById('af').classList.remove('open');document.getElementById('ofb').style.display='block';document.getElementById('qn').value='';document.getElementById('qpers').checked=false;document.getElementById('qcat').value='body'}
+function addQuest(){
+  const name=document.getElementById('qn').value.trim();
+  if(!name){showToast('⚠ ENTER A QUEST NAME',false);return}
+  const stat=document.getElementById('qst').value;
+  const xp=parseInt(document.getElementById('qxv').value);
+  const persist_flag=document.getElementById('qpers').checked;
+  const cat=document.getElementById('qcat').value||'body';
+  S.quests.push({id:S.nextId++,name,stat,xp,done:false,persist:persist_flag,cat});
+  persist();closeForm();sAdd();
+  showToast(persist_flag?'🔁 DAILY QUEST ADDED':'QUEST ADDED',false);renderQuests();
+}
+
+// ── NAME ──
+function openNM(){sClk();document.getElementById('ni').value=S.name==='ARISE'?'':S.name;document.getElementById('nm').classList.add('show');setTimeout(()=>document.getElementById('ni').focus(),100)}
+function closeNM(){document.getElementById('nm').classList.remove('show')}
+function saveName(){
+  const v=document.getElementById('ni').value.trim().toUpperCase();
+  if(!v){showToast('⚠ ENTER YOUR NAME',false);return}
+  S.name=v;persist();closeNM();render();sAdd();showToast('HUNTER NAME UPDATED',false);
+}
+
+// ── LEVEL UP ──
+function showLvlUp(level,rank){
+  document.getElementById('lu-num').textContent=level;
+  document.getElementById('lu-rank').textContent=rank;
+  document.getElementById('lvlup').classList.add('show');
+  showToast('[ LEVEL UP ] → LVL '+level,true);
+  // theme unlock notification
+  if(level===50){
+    setTimeout(()=>showToast('👑 SHADOW MONARCH THEME UNLOCKED — check Settings!',true),3000);
+  }
+}
+function closeLvlUp(){sClk();document.getElementById('lvlup').classList.remove('show')}
+
+// ── TOAST ──
+let tT;
+function showToast(msg,gold=false){const el=document.getElementById('toast');el.textContent=msg;el.className='toast show'+(gold?' gold':'');clearTimeout(tT);tT=setTimeout(()=>el.className='toast',2800)}
+
+// ── TABS / NAV ──
+function swT(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  if(btn)btn.classList.add('active');
+  if(id==='charts')setTimeout(()=>{drawRadar();drawBar();drawDonut();drawRankChart()},80);
+  if(id==='habits')renderHabits();
+  if(id==='rewards')renderRewards();
+}
+function swN(id){
+  sClk();
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+  const nb=document.getElementById('nav-'+id);if(nb)nb.classList.add('active');
+  const tabs=document.querySelectorAll('.tab');
+  swT(id,tabs[['quests','attrs','habits','rewards','charts','settings'].indexOf(id)]);
+}
+
+// ── RESET ──
+function resetConfirm(){if(confirm('Erase ALL progress?')&&confirm('Last chance — permanently reset?')){localStorage.removeItem('sl_v4');S=null;loadState();render();showToast('DATA RESET COMPLETE',false)}}
+
+// ── HELPERS ──
+function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+// ── KEYBOARD ──
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){if(document.getElementById('nm').classList.contains('show'))saveName();else if(document.getElementById('af').classList.contains('open'))addQuest()}
+  if(e.key==='Escape'){closeNM();closeLvlUp();closeForm()}
+});
+
+// ── PWA ──
+if('serviceWorker' in navigator){const sw=`const C='sl-v4';self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll([location.pathname]))));self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));`;navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:'application/javascript'}))).catch(()=>{})}
+
+// ── INIT ──
+loadState();
+// silent achievement check on load (no popups, just unlock state)
+if(S){if(!S.unlockedAchs)S.unlockedAchs=[];ACHIEVEMENTS.forEach(a=>{if(!S.unlockedAchs.includes(a.id)&&a.check(S))S.unlockedAchs.push(a.id)});persist();}
+render();
+window.addEventListener('resize',()=>{const cp=document.querySelector('.panel.active');if(cp&&cp.id==='panel-charts'){drawRadar();drawBar();drawDonut();drawRankChart()}});
+</script>
+</body>
+</html>
